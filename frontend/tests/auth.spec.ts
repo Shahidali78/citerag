@@ -14,6 +14,7 @@ test('owner sign-in uses an HttpOnly cookie and logout removes access', async ({
   await page.getByLabel('Owner access token').fill('fixture-only-owner-token-not-for-deployment');
   await page.getByRole('button',{name:'Sign in',exact:true}).click();
   await expect(page.getByRole('region',{name:'Access mode'})).toContainText('Owner live mode');
+  await expect(page.getByRole('region',{name:'Access mode'})).toContainText('Offline fixture provider; no OpenAI calls.');
   const cookie=(await context.cookies()).find(c=>c.name==='citerag_owner');
   expect(cookie?.httpOnly).toBe(true);expect(cookie?.sameSite).toBe('Strict');
   expect(await page.evaluate(()=>document.cookie)).not.toContain('citerag_owner');
