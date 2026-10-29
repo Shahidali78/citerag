@@ -1,0 +1,3 @@
+# Optional. Heavy CPU/PyTorch dependencies; not required by the default reranker.
+# Provision a compatible model locally; the application never downloads it.
+sentence-transformers>=3,<6

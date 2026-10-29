@@ -1,0 +1,3 @@
+Local operations guide
+
+The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.

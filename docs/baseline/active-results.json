@@ -1,0 +1,1354 @@
+{
+  "created_at": "2026-10-28T23:45:59.704744+00:00",
+  "mode": "openai",
+  "chat_model": "gpt-4.1-mini",
+  "embedding_model": "text-embedding-3-small",
+  "examples": 16,
+  "top_k": 5,
+  "summary": {
+    "answer_lexical_f1": 0.8468,
+    "source_recall_at_k": 1.0,
+    "source_precision_at_k": 0.4,
+    "mrr": 1.0,
+    "faithfulness_lexical_proxy": 0.896,
+    "citation_support_lexical_proxy": 0.9728,
+    "citation_validity": 1.0,
+    "latency_seconds": 1.5719,
+    "answer_correctness_judge": 1.0,
+    "faithfulness_judge": 1.0,
+    "citation_support_judge": 1.0
+  },
+  "results": [
+    {
+      "question": "What is CiteRAG designed to do?",
+      "answer": "CiteRAG is designed to answer questions about uploaded documents with source citations. It accepts PDF, Markdown, and plain text files, processes them by splitting text into overlapping chunks for retrieval, and uses vector similarity measures to find relevant chunks to answer queries. It preserves PDF page numbers in metadata and stores document vectors and metadata locally. CiteRAG emphasizes citing retrieved source chunks and reports when evidence is insufficient for answering questions [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.2581,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 0.717,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "CiteRAG answers questions about uploaded documents with source citations.",
+      "raw_answer": "CiteRAG is designed to answer questions about uploaded documents with source citations. It accepts PDF, Markdown, and plain text files, processes them by splitting text into overlapping chunks for retrieval, and uses vector similarity measures to find relevant chunks to answer queries. It preserves PDF page numbers in metadata and stores document vectors and metadata locally. CiteRAG emphasizes citing retrieved source chunks and reports when evidence is insufficient for answering questions [1].",
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.602
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.602
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.293
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "marker": "[3]",
+          "document_id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+          "filename": "operations.txt",
+          "page": 1,
+          "snippet": "Local operations guide The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.",
+          "similarity": 0.209
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[4]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.127
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "marker": "[5]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 2,
+          "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+          "similarity": 0.096
+        }
+      ],
+      "latency_seconds": 3.86,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    {
+      "question": "Which file types does CiteRAG accept?",
+      "answer": "CiteRAG accepts PDF, Markdown, and plain text files [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 1.0,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "CiteRAG accepts PDF, Markdown, and plain text files.",
+      "raw_answer": "CiteRAG accepts PDF, Markdown, and plain text files [1].",
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.679
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.679
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.32
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[3]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.162
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "marker": "[4]",
+          "document_id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+          "filename": "operations.txt",
+          "page": 1,
+          "snippet": "Local operations guide The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.",
+          "similarity": 0.151
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "marker": "[5]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 2,
+          "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+          "similarity": 0.062
+        }
+      ],
+      "latency_seconds": 1.573,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    {
+      "question": "What is the maximum upload size?",
+      "answer": "The maximum upload size is 20 MB per file [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 1.0,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "The maximum upload size is 20 MB per file.",
+      "raw_answer": "The maximum upload size is 20 MB per file [1].",
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.317
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.317
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.181
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[3]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.167
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "marker": "[4]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 2,
+          "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+          "similarity": 0.123
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "marker": "[5]",
+          "document_id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+          "filename": "operations.txt",
+          "page": 1,
+          "snippet": "Local operations guide The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.",
+          "similarity": 0.113
+        }
+      ],
+      "latency_seconds": 1.03,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    {
+      "question": "How does CiteRAG preserve PDF page numbers?",
+      "answer": "CiteRAG preserves PDF page numbers as one-based page numbers in chunk metadata [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.8182,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 0.9091,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "PDF page numbers are preserved as one-based page numbers in chunk metadata.",
+      "raw_answer": "CiteRAG preserves PDF page numbers as one-based page numbers in chunk metadata [1].",
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.625
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.625
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.378
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[3]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.173
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "marker": "[4]",
+          "document_id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+          "filename": "operations.txt",
+          "page": 1,
+          "snippet": "Local operations guide The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.",
+          "similarity": 0.095
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "marker": "[5]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 2,
+          "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+          "similarity": 0.059
+        }
+      ],
+      "latency_seconds": 1.241,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    {
+      "question": "How are document chunks created?",
+      "answer": "Document text is split into overlapping chunks within each page to create document chunks [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.9091,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 0.9167,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "Document text is split into overlapping chunks within each page.",
+      "raw_answer": "Document text is split into overlapping chunks within each page to create document chunks [1].",
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.419
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.419
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.404
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[3]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.225
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "marker": "[4]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 2,
+          "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+          "similarity": 0.067
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "marker": "[5]",
+          "document_id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+          "filename": "operations.txt",
+          "page": 1,
+          "snippet": "Local operations guide The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.",
+          "similarity": 0.044
+        }
+      ],
+      "latency_seconds": 1.067,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    {
+      "question": "Which embedding model is the default?",
+      "answer": "The default embedding model is text-embedding-3-small [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 1.0,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "The default embedding model is text-embedding-3-small.",
+      "raw_answer": "The default embedding model is text-embedding-3-small [1].",
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.262
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.262
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.178
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "marker": "[3]",
+          "document_id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+          "filename": "operations.txt",
+          "page": 1,
+          "snippet": "Local operations guide The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.",
+          "similarity": 0.143
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "marker": "[4]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 2,
+          "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+          "similarity": 0.083
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[5]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.05
+        }
+      ],
+      "latency_seconds": 1.54,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    {
+      "question": "Which database stores the vectors?",
+      "answer": "The vectors are stored in ChromaDB, which keeps document vectors in a persistent local collection [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.7273,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 0.7692,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "ChromaDB stores document vectors in a persistent local collection.",
+      "raw_answer": "The vectors are stored in ChromaDB, which keeps document vectors in a persistent local collection [1].",
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.369
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.369
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.344
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "marker": "[3]",
+          "document_id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+          "filename": "operations.txt",
+          "page": 1,
+          "snippet": "Local operations guide The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.",
+          "similarity": 0.227
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "marker": "[4]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 2,
+          "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+          "similarity": 0.125
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[5]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.095
+        }
+      ],
+      "latency_seconds": 1.292,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    {
+      "question": "Where is document metadata stored?",
+      "answer": "Document metadata, including document names, chunk counts, and ingestion timestamps, is stored in SQLite [2].",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.7273,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 0.8462,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "SQLite stores document names, chunk counts, and ingestion timestamps.",
+      "raw_answer": "Document metadata, including document names, chunk counts, and ingestion timestamps, is stored in SQLite [2].",
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.388
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.397
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.388
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[3]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.304
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "marker": "[4]",
+          "document_id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+          "filename": "operations.txt",
+          "page": 1,
+          "snippet": "Local operations guide The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.",
+          "similarity": 0.118
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "marker": "[5]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 2,
+          "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+          "similarity": 0.072
+        }
+      ],
+      "latency_seconds": 1.537,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    {
+      "question": "What does retrieval similarity measure?",
+      "answer": "Retrieval similarity measures vector closeness and does not prove factual correctness [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 1.0,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "Retrieval similarity measures vector closeness and does not prove factual correctness.",
+      "raw_answer": "Retrieval similarity measures vector closeness and does not prove factual correctness [1].",
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.277
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.277
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.271
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "marker": "[3]",
+          "document_id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+          "filename": "operations.txt",
+          "page": 1,
+          "snippet": "Local operations guide The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.",
+          "similarity": 0.12
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[4]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.109
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "marker": "[5]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 2,
+          "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+          "similarity": 0.075
+        }
+      ],
+      "latency_seconds": 1.025,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    {
+      "question": "How are citation identifiers validated?",
+      "answer": "Citation identifiers are validated by checking them against the chunks retrieved for the current question [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.8,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 0.7143,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "Citation identifiers are checked against the chunks retrieved for the current question.",
+      "raw_answer": "Citation identifiers are validated by checking them against the chunks retrieved for the current question [1].",
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.37
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.37
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.236
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "marker": "[3]",
+          "document_id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+          "filename": "operations.txt",
+          "page": 1,
+          "snippet": "Local operations guide The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.",
+          "similarity": 0.185
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "marker": "[4]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 2,
+          "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+          "similarity": 0.146
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[5]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.129
+        }
+      ],
+      "latency_seconds": 1.141,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    {
+      "question": "What happens when evidence is insufficient?",
+      "answer": "When evidence is insufficient, the assistant reports that the documents do not provide enough information [1][2].",
+      "sources": [
+        "sample.md",
+        "sample.md"
+      ],
+      "answer_lexical_f1": 1.0,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 0.8929,
+      "citation_validity": 1.0,
+      "reference_answer": "When evidence is insufficient, the assistant reports that the documents do not provide enough information.",
+      "raw_answer": "When evidence is insufficient, the assistant reports that the documents do not provide enough information [1][2].",
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.231
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.207
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.231
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.207
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[3]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.163
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "marker": "[4]",
+          "document_id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+          "filename": "operations.txt",
+          "page": 1,
+          "snippet": "Local operations guide The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.",
+          "similarity": 0.107
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "marker": "[5]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 2,
+          "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+          "similarity": 0.073
+        }
+      ],
+      "latency_seconds": 3.101,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    {
+      "question": "Can scanned PDFs be searched without OCR?",
+      "answer": "The documents state that scanned PDFs require OCR before their text can be indexed, implying they cannot be searched without OCR [1][2].",
+      "sources": [
+        "sample.md",
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.6897,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 0.7368,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "Scanned PDFs require OCR before their text can be indexed.",
+      "raw_answer": "The documents state that scanned PDFs require OCR before their text can be indexed, implying they cannot be searched without OCR [1][2].",
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.552
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.361
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.552
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.361
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[3]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.226
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "marker": "[4]",
+          "document_id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+          "filename": "operations.txt",
+          "page": 1,
+          "snippet": "Local operations guide The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.",
+          "similarity": 0.074
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "marker": "[5]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 2,
+          "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+          "similarity": 0.042
+        }
+      ],
+      "latency_seconds": 1.449,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    {
+      "question": "What does deleting a document remove?",
+      "answer": "Deleting a document removes its vectors and its SQLite metadata [1][2].",
+      "sources": [
+        "sample.md",
+        "sample.md"
+      ],
+      "answer_lexical_f1": 1.0,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 0.9444,
+      "citation_validity": 1.0,
+      "reference_answer": "Deleting a document removes its vectors and its SQLite metadata.",
+      "raw_answer": "Deleting a document removes its vectors and its SQLite metadata [1][2].",
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.531
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.339
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.531
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.339
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[3]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.33
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "marker": "[4]",
+          "document_id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+          "filename": "operations.txt",
+          "page": 1,
+          "snippet": "Local operations guide The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.",
+          "similarity": 0.041
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "marker": "[5]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 2,
+          "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+          "similarity": 0.027
+        }
+      ],
+      "latency_seconds": 1.432,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    {
+      "question": "What does retrieval depth control?",
+      "answer": "Retrieval depth controls the maximum number of chunks passed to answer generation [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 1.0,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "Retrieval depth controls the maximum number of chunks passed to answer generation.",
+      "raw_answer": "Retrieval depth controls the maximum number of chunks passed to answer generation [1].",
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.371
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.371
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.215
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "marker": "[3]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 2,
+          "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+          "similarity": 0.184
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[4]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.171
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "marker": "[5]",
+          "document_id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+          "filename": "operations.txt",
+          "page": 1,
+          "snippet": "Local operations guide The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.",
+          "similarity": 0.166
+        }
+      ],
+      "latency_seconds": 1.264,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    {
+      "question": "Are document instructions trusted?",
+      "answer": "Document instructions are untrusted data and must not override system instructions [1][3].",
+      "sources": [
+        "sample.md",
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.9524,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 0.7273,
+      "citation_validity": 1.0,
+      "reference_answer": "Retrieved document instructions are untrusted data and must not override system instructions.",
+      "raw_answer": "Document instructions are untrusted data and must not override system instructions [1][3].",
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.482
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[3]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.334
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.482
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[2]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.354
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[3]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.334
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "marker": "[4]",
+          "document_id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+          "filename": "operations.txt",
+          "page": 1,
+          "snippet": "Local operations guide The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.",
+          "similarity": 0.17
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "marker": "[5]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 2,
+          "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+          "similarity": 0.124
+        }
+      ],
+      "latency_seconds": 1.259,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    {
+      "question": "Does this project isolate multiple user accounts?",
+      "answer": "The documents state that this project is a single-user local application without multi-user authentication [1]. Therefore, it does not isolate multiple user accounts.",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.6667,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 0.7273,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "This project is a single-user local application without multi-user authentication.",
+      "raw_answer": "The documents state that this project is a single-user local application without multi-user authentication [1]. Therefore, it does not isolate multiple user accounts.",
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.284
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.284
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "marker": "[2]",
+          "document_id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+          "filename": "operations.txt",
+          "page": 1,
+          "snippet": "Local operations guide The backend health endpoint is GET /health. The research workspace runs on port 3000. The API runs on port 8000. Evaluation results are available at GET /evaluations. Keep API credentials on the backend only.",
+          "similarity": 0.225
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[3]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.179
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "marker": "[4]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 2,
+          "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+          "similarity": 0.178
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[5]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.142
+        }
+      ],
+      "latency_seconds": 1.34,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    }
+  ],
+  "corpus": [
+    {
+      "id": "de39c732-28c0-4017-9008-496aa491b983",
+      "filename": "verification.pdf",
+      "chunks": 2,
+      "created_at": "2026-10-28T23:44:33.445998+00:00"
+    },
+    {
+      "id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+      "filename": "operations.txt",
+      "chunks": 1,
+      "created_at": "2026-10-28T23:44:32.812346+00:00"
+    },
+    {
+      "id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+      "filename": "sample.md",
+      "chunks": 2,
+      "created_at": "2026-10-28T23:42:46.097758+00:00"
+    }
+  ],
+  "judge_enabled": true,
+  "judge_retries": [
+    {
+      "row": 6,
+      "retried_at": "2026-10-28T23:47:41.066884+00:00",
+      "format": "strict_json_schema"
+    }
+  ],
+  "judge_missing_counts": {
+    "answer_correctness_judge": 0,
+    "faithfulness_judge": 0,
+    "citation_support_judge": 0
+  },
+  "rechecks": [
+    {
+      "question": "What happens when evidence is insufficient?",
+      "created_at": "2026-10-28T23:49:28.258098+00:00",
+      "reason": "Fixed false refusal when a grounded answer describes insufficient-evidence behavior.",
+      "previous_answer": "The documents do not provide enough information to answer with citations.",
+      "previous_citation_support_judge": 0.0
+    }
+  ],
+  "updated_at": "2026-10-28T23:49:28.263042+00:00"
+}

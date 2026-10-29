@@ -1,0 +1,233 @@
+{
+  "conditions": {
+    "created_at": "2026-10-29T00:03:38.695337+00:00",
+    "mode": "openai",
+    "examples": 16,
+    "chat_model": "gpt-4.1-mini",
+    "embedding_model": "text-embedding-3-small",
+    "dataset_sha256": "1f6bf19184ea398a1f3c99025cd7bd5be7b1d1fbbf78661992dd93b4f0ac2fbe",
+    "corpus_sha256": "60a94e4e3ea1b7ec93dfde5261bddea1c5f40f44152ef79e2c97f95f65b841f8",
+    "corpus": [
+      {
+        "id": "de39c732-28c0-4017-9008-496aa491b983",
+        "filename": "verification.pdf",
+        "chunks": 2,
+        "created_at": "2026-10-28T23:44:33.445998+00:00"
+      },
+      {
+        "id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+        "filename": "operations.txt",
+        "chunks": 1,
+        "created_at": "2026-10-28T23:44:32.812346+00:00"
+      },
+      {
+        "id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+        "filename": "sample.md",
+        "chunks": 2,
+        "created_at": "2026-10-28T23:42:46.097758+00:00"
+      }
+    ],
+    "shared_embedding_batch_seconds": 2.7817148999893107,
+    "embedding_note": "Same real query vectors reused for all configurations. Reported per-row latency excludes this shared batch and optional judge time.",
+    "calibration_note": "Threshold tuned on these same 16 labeled examples, including expected evidence. Results are in-sample and need held-out validation."
+  },
+  "threshold_trials": [
+    {
+      "threshold": 0,
+      "preserves_every_question_source_recall_and_evidence_coverage": true,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5
+    },
+    {
+      "threshold": 0.1,
+      "preserves_every_question_source_recall_and_evidence_coverage": true,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.9167,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 2
+    },
+    {
+      "threshold": 0.2,
+      "preserves_every_question_source_recall_and_evidence_coverage": true,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.9479,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 1.5625
+    },
+    {
+      "threshold": 0.25,
+      "preserves_every_question_source_recall_and_evidence_coverage": false,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "expected_evidence_coverage": 0.9583,
+      "selected_count": 1.1875
+    },
+    {
+      "threshold": 0.3,
+      "preserves_every_question_source_recall_and_evidence_coverage": false,
+      "source_recall_at_k": 0.875,
+      "source_precision_at_k": 0.875,
+      "expected_evidence_coverage": 0.875,
+      "selected_count": 1
+    },
+    {
+      "threshold": 0.35,
+      "preserves_every_question_source_recall_and_evidence_coverage": false,
+      "source_recall_at_k": 0.875,
+      "source_precision_at_k": 0.875,
+      "expected_evidence_coverage": 0.875,
+      "selected_count": 1
+    },
+    {
+      "threshold": 0.4,
+      "preserves_every_question_source_recall_and_evidence_coverage": false,
+      "source_recall_at_k": 0.75,
+      "source_precision_at_k": 0.75,
+      "expected_evidence_coverage": 0.75,
+      "selected_count": 0.75
+    },
+    {
+      "threshold": 0.45,
+      "preserves_every_question_source_recall_and_evidence_coverage": false,
+      "source_recall_at_k": 0.4375,
+      "source_precision_at_k": 0.4375,
+      "expected_evidence_coverage": 0.4375,
+      "selected_count": 0.4375
+    },
+    {
+      "threshold": 0.5,
+      "preserves_every_question_source_recall_and_evidence_coverage": false,
+      "source_recall_at_k": 0.1875,
+      "source_precision_at_k": 0.1875,
+      "expected_evidence_coverage": 0.1875,
+      "selected_count": 0.1875
+    },
+    {
+      "threshold": 0.55,
+      "preserves_every_question_source_recall_and_evidence_coverage": false,
+      "source_recall_at_k": 0.1875,
+      "source_precision_at_k": 0.1875,
+      "expected_evidence_coverage": 0.1875,
+      "selected_count": 0.1875
+    },
+    {
+      "threshold": 0.6,
+      "preserves_every_question_source_recall_and_evidence_coverage": false,
+      "source_recall_at_k": 0.125,
+      "source_precision_at_k": 0.125,
+      "expected_evidence_coverage": 0.125,
+      "selected_count": 0.125
+    },
+    {
+      "threshold": 0.65,
+      "preserves_every_question_source_recall_and_evidence_coverage": false,
+      "source_recall_at_k": 0.125,
+      "source_precision_at_k": 0.125,
+      "expected_evidence_coverage": 0.125,
+      "selected_count": 0.125
+    },
+    {
+      "threshold": 0.7,
+      "preserves_every_question_source_recall_and_evidence_coverage": false,
+      "source_recall_at_k": 0.125,
+      "source_precision_at_k": 0.125,
+      "expected_evidence_coverage": 0.125,
+      "selected_count": 0.125
+    },
+    {
+      "threshold": 0.75,
+      "preserves_every_question_source_recall_and_evidence_coverage": false,
+      "source_recall_at_k": 0.0625,
+      "source_precision_at_k": 0.0625,
+      "expected_evidence_coverage": 0.0625,
+      "selected_count": 0.0625
+    },
+    {
+      "threshold": 0.8,
+      "preserves_every_question_source_recall_and_evidence_coverage": false,
+      "source_recall_at_k": 0.0,
+      "source_precision_at_k": 0.0,
+      "expected_evidence_coverage": 0.0,
+      "selected_count": 0
+    }
+  ],
+  "selected_threshold": 0.2,
+  "retrieval": {
+    "dense": {
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "retrieval_seconds": 0.0244,
+      "selected_count": 5
+    },
+    "hybrid": {
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "retrieval_seconds": 0.0304,
+      "selected_count": 5
+    },
+    "hybrid_rerank": {
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.9479,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "retrieval_seconds": 0.0281,
+      "selected_count": 1.5625
+    },
+    "dense_top1_control": {
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 0.9449,
+      "retrieval_seconds": 0.0256,
+      "selected_count": 1
+    }
+  },
+  "answers": {
+    "dense": {
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "answer_lexical_f1": 0.8529,
+      "faithfulness_lexical_proxy": 0.8942,
+      "citation_support_lexical_proxy": 0.9898,
+      "citation_validity": 1.0,
+      "latency_seconds": 1.3387,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    "hybrid": {
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "answer_lexical_f1": 0.8463,
+      "faithfulness_lexical_proxy": 0.8913,
+      "citation_support_lexical_proxy": 0.9621,
+      "citation_validity": 1.0,
+      "latency_seconds": 1.2679,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    },
+    "hybrid_rerank": {
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.9479,
+      "mrr": 1.0,
+      "answer_lexical_f1": 0.8149,
+      "faithfulness_lexical_proxy": 0.8786,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 1.4366,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0
+    }
+  },
+  "validation_note": "Only the mixed-refusal regression was regenerated after a validator fix. Original comparison and all raw reports are retained unchanged."
+}

@@ -1,0 +1,114 @@
+{
+  "generation_usage": {
+    "dense": {
+      "input_tokens": 8657,
+      "output_tokens": 355,
+      "total_tokens": 9012
+    },
+    "hybrid": {
+      "input_tokens": 8657,
+      "output_tokens": 400,
+      "total_tokens": 9057
+    },
+    "hybrid_rerank": {
+      "input_tokens": 5101,
+      "output_tokens": 410,
+      "total_tokens": 5511
+    }
+  },
+  "source_reports": {
+    "dense": {
+      "summary": {
+        "source_recall_at_k": 1.0,
+        "source_precision_at_k": 0.4,
+        "mrr": 1.0,
+        "answer_lexical_f1": 0.8529,
+        "faithfulness_lexical_proxy": 0.8942,
+        "citation_support_lexical_proxy": 0.9898,
+        "citation_validity": 1.0,
+        "latency_seconds": 1.3387,
+        "answer_correctness_judge": 1.0,
+        "faithfulness_judge": 1.0,
+        "citation_support_judge": 1.0
+      },
+      "missing_judges": {
+        "answer_correctness_judge": 0,
+        "faithfulness_judge": 0,
+        "citation_support_judge": 0
+      },
+      "retrieval_configuration": {
+        "mode": "dense",
+        "candidates": 20,
+        "top_k": 5,
+        "threshold": 0
+      }
+    },
+    "hybrid": {
+      "summary": {
+        "source_recall_at_k": 1.0,
+        "source_precision_at_k": 0.4,
+        "mrr": 1.0,
+        "answer_lexical_f1": 0.8463,
+        "faithfulness_lexical_proxy": 0.8913,
+        "citation_support_lexical_proxy": 0.9621,
+        "citation_validity": 1.0,
+        "latency_seconds": 1.2679,
+        "answer_correctness_judge": 1.0,
+        "faithfulness_judge": 1.0,
+        "citation_support_judge": 1.0
+      },
+      "missing_judges": {
+        "answer_correctness_judge": 0,
+        "faithfulness_judge": 0,
+        "citation_support_judge": 0
+      },
+      "retrieval_configuration": {
+        "mode": "hybrid",
+        "candidates": 20,
+        "top_k": 5,
+        "threshold": 0
+      }
+    },
+    "hybrid_rerank": {
+      "summary": {
+        "source_recall_at_k": 1.0,
+        "source_precision_at_k": 0.9479,
+        "mrr": 1.0,
+        "answer_lexical_f1": 0.8149,
+        "faithfulness_lexical_proxy": 0.8786,
+        "citation_support_lexical_proxy": 1.0,
+        "citation_validity": 1.0,
+        "latency_seconds": 1.4366,
+        "answer_correctness_judge": 1.0,
+        "faithfulness_judge": 1.0,
+        "citation_support_judge": 1.0
+      },
+      "missing_judges": {
+        "answer_correctness_judge": 0,
+        "faithfulness_judge": 0,
+        "citation_support_judge": 0
+      },
+      "retrieval_configuration": {
+        "mode": "hybrid_rerank",
+        "candidates": 20,
+        "top_k": 5,
+        "threshold": 0.2
+      }
+    }
+  },
+  "limitations": [
+    "Calibration and evaluation share the same 16 questions.",
+    "One reranked answer was rechecked after a mixed-refusal validator regression; original reports remain unchanged.",
+    "Current ablation latency excludes shared query embedding and optional judging; historical latency includes question embedding.",
+    "No statistically established latency gain or held-out quality gain is claimed."
+  ],
+  "generation_input_token_reduction_percent": 41.08,
+  "shared_embedding_usage": {
+    "embedding": {
+      "input_tokens": 117,
+      "output_tokens": null,
+      "total_tokens": 117
+    }
+  },
+  "shared_embedding_batch_seconds": 2.7817148999893107
+}

@@ -1,0 +1,450 @@
+{
+  "mode": "openai",
+  "pdf_and_markdown_upload": "passed",
+  "temporary_documents_deleted": true,
+  "grounded_answer": {
+    "answer": "The support escalation code is ORCHID-42 [1].",
+    "citations": [
+      {
+        "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+        "marker": "[1]",
+        "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+        "filename": "verification.pdf",
+        "page": 2,
+        "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+        "similarity": 0.683
+      }
+    ],
+    "retrieved_count": 1,
+    "retrieved_sources": [
+      "verification.pdf"
+    ],
+    "retrieved_chunks": [
+      {
+        "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+        "marker": "[1]",
+        "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+        "filename": "verification.pdf",
+        "page": 2,
+        "snippet": "The support escalation code is ORCHID-42. The support desk opens at 09:00 UTC on weekdays.",
+        "similarity": 0.683
+      }
+    ],
+    "raw_answer": "The support escalation code is ORCHID-42 [1].",
+    "diagnostics": [
+      {
+        "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+        "vector_similarity": 0.6829503774642944,
+        "keyword_score": 6.5917069569168785,
+        "rrf_score": 0.03278688524590164,
+        "fusion_rank": 1,
+        "rerank_score": 0.889032632112503,
+        "selected": true,
+        "filename": "verification.pdf",
+        "page": 2
+      },
+      {
+        "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+        "vector_similarity": 0.20187854766845703,
+        "keyword_score": 0,
+        "rrf_score": 0.016129032258064516,
+        "fusion_rank": 2,
+        "rerank_score": 0.07065749168395996,
+        "selected": false,
+        "filename": "operations.txt",
+        "page": 1
+      },
+      {
+        "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "vector_similarity": 0.16677463054656982,
+        "keyword_score": 0,
+        "rrf_score": 0.015873015873015872,
+        "fusion_rank": 3,
+        "rerank_score": 0.05837112069129943,
+        "selected": false,
+        "filename": "sample.md",
+        "page": 1
+      },
+      {
+        "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+        "vector_similarity": 0.159493088722229,
+        "keyword_score": 0,
+        "rrf_score": 0.015625,
+        "fusion_rank": 4,
+        "rerank_score": 0.055822581052780144,
+        "selected": false,
+        "filename": "verification.pdf",
+        "page": 1
+      },
+      {
+        "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "vector_similarity": 0.14008915424346924,
+        "keyword_score": 0,
+        "rrf_score": 0.015384615384615385,
+        "fusion_rank": 5,
+        "rerank_score": 0.04903120398521423,
+        "selected": false,
+        "filename": "sample.md",
+        "page": 1
+      }
+    ],
+    "retrieval": {
+      "reranker_used": "lightweight",
+      "fallback": null,
+      "options": {
+        "mode": "hybrid_rerank",
+        "candidates": 20,
+        "top_k": 5,
+        "threshold": 0.2
+      }
+    },
+    "telemetry": {
+      "request_id": "46e28fc7-a98a-4682-aa87-7721cd010e1d",
+      "stages_seconds": {
+        "embedding": 0.5655451999627985,
+        "retrieval": 0.054906000033952296,
+        "generation": 1.526342700002715
+      },
+      "models": {
+        "embedding": "text-embedding-3-small",
+        "generation": "gpt-4.1-mini"
+      },
+      "usage": {
+        "embedding": {
+          "input_tokens": 7,
+          "output_tokens": null,
+          "total_tokens": 7
+        },
+        "generation": {
+          "input_tokens": 149,
+          "output_tokens": 14,
+          "total_tokens": 163
+        }
+      },
+      "estimated_cost_usd": null,
+      "retrieval_mode": "hybrid_rerank",
+      "retrieved_count": 5,
+      "selected_count": 1
+    }
+  },
+  "unsupported": {
+    "answer": "The documents do not provide enough information to answer with citations.",
+    "citations": [],
+    "retrieved_count": 0,
+    "retrieved_sources": [],
+    "retrieved_chunks": [],
+    "raw_answer": "",
+    "diagnostics": [
+      {
+        "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "vector_similarity": 0.06159782409667969,
+        "keyword_score": 0,
+        "rrf_score": 0.01639344262295082,
+        "fusion_rank": 1,
+        "rerank_score": 0.02155923843383789,
+        "selected": false,
+        "filename": "sample.md",
+        "page": 1
+      },
+      {
+        "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "vector_similarity": 0.057359516620635986,
+        "keyword_score": 0,
+        "rrf_score": 0.016129032258064516,
+        "fusion_rank": 2,
+        "rerank_score": 0.020075830817222595,
+        "selected": false,
+        "filename": "sample.md",
+        "page": 1
+      },
+      {
+        "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+        "vector_similarity": 0.05526548624038696,
+        "keyword_score": 0,
+        "rrf_score": 0.015873015873015872,
+        "fusion_rank": 3,
+        "rerank_score": 0.019342920184135436,
+        "selected": false,
+        "filename": "verification.pdf",
+        "page": 1
+      },
+      {
+        "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+        "vector_similarity": 0.03651571273803711,
+        "keyword_score": 0,
+        "rrf_score": 0.015625,
+        "fusion_rank": 4,
+        "rerank_score": 0.012780499458312987,
+        "selected": false,
+        "filename": "verification.pdf",
+        "page": 2
+      },
+      {
+        "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+        "vector_similarity": 0.0021886825561523438,
+        "keyword_score": 0,
+        "rrf_score": 0.015384615384615385,
+        "fusion_rank": 5,
+        "rerank_score": 0.0007660388946533203,
+        "selected": false,
+        "filename": "operations.txt",
+        "page": 1
+      }
+    ],
+    "retrieval": {
+      "reranker_used": "lightweight",
+      "fallback": null,
+      "options": {
+        "mode": "hybrid_rerank",
+        "candidates": 20,
+        "top_k": 5,
+        "threshold": 0.2
+      }
+    },
+    "telemetry": {
+      "request_id": "60ed2aed-14f9-4245-bc7b-ab1280744f91",
+      "stages_seconds": {
+        "embedding": 0.4330070999567397,
+        "retrieval": 0.028000399994198233
+      },
+      "models": {
+        "embedding": "text-embedding-3-small"
+      },
+      "usage": {
+        "embedding": {
+          "input_tokens": 8,
+          "output_tokens": null,
+          "total_tokens": 8
+        }
+      },
+      "estimated_cost_usd": null,
+      "retrieval_mode": "hybrid_rerank",
+      "retrieved_count": 5,
+      "selected_count": 0
+    }
+  },
+  "monitoring": {
+    "total_requests": 9,
+    "average_latency_seconds": 1.1747667777777777,
+    "errors": 0,
+    "error_rate": 0.0,
+    "tokens": {
+      "input_tokens": 441,
+      "output_tokens": 14,
+      "total_tokens": 455
+    },
+    "usage_observations": 5,
+    "estimated_cost_usd": null,
+    "costed_requests": 0,
+    "retrieval_configurations": {
+      "hybrid_rerank": 2
+    },
+    "retention_days": 30,
+    "sampled_requests": 9,
+    "aggregation_note": "Request count and latency span retained rows. Token/cost/configuration aggregates cover the latest 1000 rows; missing usage and prices are excluded.",
+    "recent": [
+      {
+        "request_id": "60ed2aed-14f9-4245-bc7b-ab1280744f91",
+        "stages_seconds": {
+          "embedding": 0.4330070999567397,
+          "retrieval": 0.028000399994198233
+        },
+        "models": {
+          "embedding": "text-embedding-3-small"
+        },
+        "usage": {
+          "embedding": {
+            "input_tokens": 8,
+            "output_tokens": null,
+            "total_tokens": 8
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 0,
+        "provider_mode": "openai",
+        "timestamp": "2026-10-29T00:16:51.713472+00:00",
+        "endpoint": "/chat",
+        "method": "POST",
+        "status": 200,
+        "success": true,
+        "latency_seconds": 0.485269
+      },
+      {
+        "request_id": "46e28fc7-a98a-4682-aa87-7721cd010e1d",
+        "stages_seconds": {
+          "embedding": 0.5655451999627985,
+          "retrieval": 0.054906000033952296,
+          "generation": 1.526342700002715
+        },
+        "models": {
+          "embedding": "text-embedding-3-small",
+          "generation": "gpt-4.1-mini"
+        },
+        "usage": {
+          "embedding": {
+            "input_tokens": 7,
+            "output_tokens": null,
+            "total_tokens": 7
+          },
+          "generation": {
+            "input_tokens": 149,
+            "output_tokens": 14,
+            "total_tokens": 163
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 1,
+        "provider_mode": "openai",
+        "timestamp": "2026-10-29T00:16:51.208215+00:00",
+        "endpoint": "/chat",
+        "method": "POST",
+        "status": 200,
+        "success": true,
+        "latency_seconds": 2.172373
+      },
+      {
+        "request_id": "596a6089-6eea-4e51-a3fa-83bc2bdb02cb",
+        "stages_seconds": {},
+        "models": {},
+        "usage": {},
+        "estimated_cost_usd": null,
+        "retrieval_mode": null,
+        "retrieved_count": 0,
+        "selected_count": 0,
+        "provider_mode": "openai",
+        "timestamp": "2026-10-29T00:16:49.022644+00:00",
+        "endpoint": "/documents",
+        "method": "GET",
+        "status": 200,
+        "success": true,
+        "latency_seconds": 0.004782
+      },
+      {
+        "request_id": "74589eeb-9e67-451c-aebb-9c3c00ca27d7",
+        "stages_seconds": {},
+        "models": {},
+        "usage": {},
+        "estimated_cost_usd": null,
+        "retrieval_mode": null,
+        "retrieved_count": 0,
+        "selected_count": 0,
+        "provider_mode": "openai",
+        "timestamp": "2026-10-29T00:16:49.008811+00:00",
+        "endpoint": "/documents/{document_id}",
+        "method": "DELETE",
+        "status": 200,
+        "success": true,
+        "latency_seconds": 0.048076
+      },
+      {
+        "request_id": "081942b5-e0a7-459a-beb7-cb10df4bed6c",
+        "stages_seconds": {},
+        "models": {},
+        "usage": {},
+        "estimated_cost_usd": null,
+        "retrieval_mode": null,
+        "retrieved_count": 0,
+        "selected_count": 0,
+        "provider_mode": "openai",
+        "timestamp": "2026-10-29T00:16:48.950259+00:00",
+        "endpoint": "/documents/{document_id}",
+        "method": "DELETE",
+        "status": 200,
+        "success": true,
+        "latency_seconds": 0.055619
+      },
+      {
+        "request_id": "68f116ea-d2f0-40de-a0f9-37f7571f7a7d",
+        "stages_seconds": {
+          "embedding": 1.8370477000134997
+        },
+        "models": {
+          "embedding": "text-embedding-3-small"
+        },
+        "usage": {
+          "embedding": {
+            "input_tokens": 244,
+            "output_tokens": null,
+            "total_tokens": 244
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": null,
+        "retrieved_count": 0,
+        "selected_count": 0,
+        "provider_mode": "openai",
+        "timestamp": "2026-10-29T00:16:48.883560+00:00",
+        "endpoint": "/documents",
+        "method": "POST",
+        "status": 201,
+        "success": true,
+        "latency_seconds": 1.895693
+      },
+      {
+        "request_id": "4751e9ca-9fb8-4d60-a308-4af8350e7053",
+        "stages_seconds": {
+          "embedding": 5.577800299972296
+        },
+        "models": {
+          "embedding": "text-embedding-3-small"
+        },
+        "usage": {
+          "embedding": {
+            "input_tokens": 33,
+            "output_tokens": null,
+            "total_tokens": 33
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": null,
+        "retrieved_count": 0,
+        "selected_count": 0,
+        "provider_mode": "openai",
+        "timestamp": "2026-10-29T00:16:46.973082+00:00",
+        "endpoint": "/documents",
+        "method": "POST",
+        "status": 201,
+        "success": true,
+        "latency_seconds": 5.905504
+      },
+      {
+        "request_id": "cf9e8755-2ba4-418d-84c2-0f0fca8b32ae",
+        "stages_seconds": {},
+        "models": {},
+        "usage": {},
+        "estimated_cost_usd": null,
+        "retrieval_mode": null,
+        "retrieved_count": 0,
+        "selected_count": 0,
+        "provider_mode": "openai",
+        "timestamp": "2026-10-29T00:16:41.014538+00:00",
+        "endpoint": "/documents",
+        "method": "GET",
+        "status": 200,
+        "success": true,
+        "latency_seconds": 0.003958
+      },
+      {
+        "request_id": "331e772a-3a53-448a-8c8d-566b50540cf1",
+        "stages_seconds": {},
+        "models": {},
+        "usage": {},
+        "estimated_cost_usd": null,
+        "retrieval_mode": null,
+        "retrieved_count": 0,
+        "selected_count": 0,
+        "provider_mode": "openai",
+        "timestamp": "2026-10-29T00:16:40.986289+00:00",
+        "endpoint": "/retrieval/config",
+        "method": "GET",
+        "status": 200,
+        "success": true,
+        "latency_seconds": 0.001627
+      }
+    ]
+  }
+}

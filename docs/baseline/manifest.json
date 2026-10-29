@@ -1,0 +1,18 @@
+{
+  "docs/openai-evaluation.json": {
+    "sha256": "7f1c494e19188fffcac2e71cbc83c97e4e459a952a27f26d7fe70c8b16f62ed7",
+    "snapshot": "docs\\baseline\\openai-evaluation.json"
+  },
+  "docs/verification.md": {
+    "sha256": "5dea314aa71be2583af62e9cac649573c6172675205d39cd87b6405bd893e57b",
+    "snapshot": "docs\\baseline\\verification.md"
+  },
+  "backend/evals/results.json": {
+    "sha256": "7f1c494e19188fffcac2e71cbc83c97e4e459a952a27f26d7fe70c8b16f62ed7",
+    "snapshot": "docs\\baseline\\active-results.json"
+  },
+  "backend/evals/sample.jsonl": {
+    "sha256": "e1cd1c33e7ff44160af6768a4d63ff55283643b194c10d78017cd5ec1627ee65",
+    "snapshot": "docs\\baseline\\sample.jsonl"
+  }
+}

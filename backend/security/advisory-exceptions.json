@@ -1,0 +1,9 @@
+{
+  "reviewed_at": "2026-10-29",
+  "review_before": "2026-11-29",
+  "package": "chromadb",
+  "version": "1.5.9",
+  "ids": ["PYSEC-2026-311", "PYSEC-2026-3814", "PYSEC-2026-3815", "PYSEC-2026-3813"],
+  "reason": "Upstream has no patched version listed. These advisories concern Chroma HTTP-server collection/model configuration or server RBAC. CiteRAG uses an embedded PersistentClient, never runs or exposes the Chroma HTTP server, never accepts embedding-function/model-repository configuration from API clients, and loads optional rerankers from local files only. This is a scoped applicability exception, not a claim that the dependency is patched.",
+  "invalid_if": "Chroma server endpoints, remote model configuration, trust_remote_code, HttpClient, multi-tenant RBAC, or another Chroma version is introduced. Re-review before the stated date."
+}

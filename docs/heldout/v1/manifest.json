@@ -1,0 +1,6 @@
+{
+  "protocol_sha256": "606c980d514990cfbec94215412b3e76c272ac286a7c729b2f3cf35b01d497af",
+  "dataset_sha256": "1575504665553575465f57dc09e0f8d5ea0e302e85b5672b035550262b6a0bd9",
+  "split": "held_out",
+  "prompt_sha256": "0b767622efa65fbceb4911684403ac44c35c5f9e6b5c1f72f98a3bee301cbb3b"
+}

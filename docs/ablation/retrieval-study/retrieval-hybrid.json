@@ -1,0 +1,1218 @@
+{
+  "created_at": "2026-10-29T00:01:51.262985+00:00",
+  "mode": "openai",
+  "examples": 16,
+  "chat_model": "gpt-4.1-mini",
+  "embedding_model": "text-embedding-3-small",
+  "dataset_sha256": "1f6bf19184ea398a1f3c99025cd7bd5be7b1d1fbbf78661992dd93b4f0ac2fbe",
+  "corpus_sha256": "60a94e4e3ea1b7ec93dfde5261bddea1c5f40f44152ef79e2c97f95f65b841f8",
+  "corpus": [
+    {
+      "id": "de39c732-28c0-4017-9008-496aa491b983",
+      "filename": "verification.pdf",
+      "chunks": 2,
+      "created_at": "2026-10-28T23:44:33.445998+00:00"
+    },
+    {
+      "id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+      "filename": "operations.txt",
+      "chunks": 1,
+      "created_at": "2026-10-28T23:44:32.812346+00:00"
+    },
+    {
+      "id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+      "filename": "sample.md",
+      "chunks": 2,
+      "created_at": "2026-10-28T23:42:46.097758+00:00"
+    }
+  ],
+  "shared_embedding_batch_seconds": 2.7817148999893107,
+  "embedding_note": "Same real query vectors reused for all configurations. Reported per-row latency excludes this shared batch and optional judge time.",
+  "calibration_note": "Threshold tuned on these same 16 labeled examples, including expected evidence. Results are in-sample and need held-out validation.",
+  "top_k": 5,
+  "retrieval_configuration": {
+    "mode": "hybrid",
+    "candidates": 20,
+    "top_k": 5,
+    "threshold": 0
+  },
+  "evaluation_kind": "retrieval_only",
+  "summary": {
+    "source_recall_at_k": 1.0,
+    "source_precision_at_k": 0.4,
+    "mrr": 1.0,
+    "expected_evidence_coverage": 1.0,
+    "retrieval_seconds": 0.0271,
+    "selected_count": 5
+  },
+  "results": [
+    {
+      "question": "What is CiteRAG designed to do?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5,
+      "retrieval_seconds": 0.030480500019621104,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+        "de39c732-28c0-4017-9008-496aa491b983:0",
+        "de39c732-28c0-4017-9008-496aa491b983:1"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.6015303134918213,
+          "keyword_score": 1.642646819280301,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.2926587462425232,
+          "keyword_score": 0,
+          "rrf_score": 0.016129032258064516,
+          "fusion_rank": 2,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.20931601524353027,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.12683641910552979,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.09641408920288086,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "question": "Which file types does CiteRAG accept?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5,
+      "retrieval_seconds": 0.027552500017918646,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "de39c732-28c0-4017-9008-496aa491b983:0",
+        "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+        "de39c732-28c0-4017-9008-496aa491b983:1"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.6787053346633911,
+          "keyword_score": 2.4431317522104212,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.3201589584350586,
+          "keyword_score": 0,
+          "rrf_score": 0.016129032258064516,
+          "fusion_rank": 2,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.16201961040496826,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.15141236782073975,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.06227976083755493,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "question": "What is the maximum upload size?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5,
+      "retrieval_seconds": 0.027160099998582155,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "de39c732-28c0-4017-9008-496aa491b983:0",
+        "de39c732-28c0-4017-9008-496aa491b983:1",
+        "a16b6139-9830-40e3-9694-11862af7b2a0:0"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.31672483682632446,
+          "keyword_score": 2.1064898716813905,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.18110382556915283,
+          "keyword_score": 0.782939521210805,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.16657543182373047,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.12285411357879639,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 2
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.11326724290847778,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "operations.txt",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "How does CiteRAG preserve PDF page numbers?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5,
+      "retrieval_seconds": 0.028520399995613843,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "de39c732-28c0-4017-9008-496aa491b983:0",
+        "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+        "de39c732-28c0-4017-9008-496aa491b983:1"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.6252259612083435,
+          "keyword_score": 5.886442972858051,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.378082275390625,
+          "keyword_score": 0,
+          "rrf_score": 0.016129032258064516,
+          "fusion_rank": 2,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.17264777421951294,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.09486818313598633,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.05907106399536133,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "question": "How are document chunks created?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5,
+      "retrieval_seconds": 0.027623899979516864,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "de39c732-28c0-4017-9008-496aa491b983:0",
+        "de39c732-28c0-4017-9008-496aa491b983:1",
+        "a16b6139-9830-40e3-9694-11862af7b2a0:0"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.4186442494392395,
+          "keyword_score": 1.5567103467494139,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.4039572477340698,
+          "keyword_score": 1.4929947916370996,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.22487246990203857,
+          "keyword_score": 0.8882339337916941,
+          "rrf_score": 0.031746031746031744,
+          "fusion_rank": 3,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.06656944751739502,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 2
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.04443603754043579,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "operations.txt",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "Which embedding model is the default?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5,
+      "retrieval_seconds": 0.02628499997081235,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+        "de39c732-28c0-4017-9008-496aa491b983:1",
+        "de39c732-28c0-4017-9008-496aa491b983:0"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.26164710521698,
+          "keyword_score": 2.9015445330089653,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.1776142120361328,
+          "keyword_score": 0,
+          "rrf_score": 0.016129032258064516,
+          "fusion_rank": 2,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.14333868026733398,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.08301633596420288,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 2
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.04955089092254639,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "Which database stores the vectors?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5,
+      "retrieval_seconds": 0.027226899983361363,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+        "de39c732-28c0-4017-9008-496aa491b983:1",
+        "de39c732-28c0-4017-9008-496aa491b983:0"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.3671844005584717,
+          "keyword_score": 1.8060946729698741,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.34323054552078247,
+          "keyword_score": 0.782939521210805,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.2263479232788086,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.12361091375350952,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 2
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.09189897775650024,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "Where is document metadata stored?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5,
+      "retrieval_seconds": 0.02703630004543811,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "de39c732-28c0-4017-9008-496aa491b983:0",
+        "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+        "de39c732-28c0-4017-9008-496aa491b983:1"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.3968477249145508,
+          "keyword_score": 1.4929947916370996,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.3876168131828308,
+          "keyword_score": 1.2408950765882265,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.3042994737625122,
+          "keyword_score": 0.8882339337916941,
+          "rrf_score": 0.031746031746031744,
+          "fusion_rank": 3,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.11801278591156006,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.07245522737503052,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "question": "What does retrieval similarity measure?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5,
+      "retrieval_seconds": 0.026047700026538223,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+        "de39c732-28c0-4017-9008-496aa491b983:0",
+        "de39c732-28c0-4017-9008-496aa491b983:1"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.2771154046058655,
+          "keyword_score": 1.30600493875127,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.2712956666946411,
+          "keyword_score": 0.782939521210805,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.11985123157501221,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.10883671045303345,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.07542425394058228,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "question": "How are citation identifiers validated?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5,
+      "retrieval_seconds": 0.025651699979789555,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+        "de39c732-28c0-4017-9008-496aa491b983:1",
+        "de39c732-28c0-4017-9008-496aa491b983:0"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.3698110580444336,
+          "keyword_score": 1.600969865860241,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.2354748249053955,
+          "keyword_score": 0,
+          "rrf_score": 0.016129032258064516,
+          "fusion_rank": 2,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.18447542190551758,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.1455005407333374,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 2
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.12854355573654175,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "What happens when evidence is insufficient?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5,
+      "retrieval_seconds": 0.028202000015880913,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "de39c732-28c0-4017-9008-496aa491b983:0",
+        "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+        "de39c732-28c0-4017-9008-496aa491b983:1"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.2307785153388977,
+          "keyword_score": 0,
+          "rrf_score": 0.01639344262295082,
+          "fusion_rank": 2,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.20733696222305298,
+          "keyword_score": 2.401454798790361,
+          "rrf_score": 0.03252247488101534,
+          "fusion_rank": 1,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.16293567419052124,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.10684537887573242,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.0734412670135498,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "question": "Can scanned PDFs be searched without OCR?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5,
+      "retrieval_seconds": 0.02559189999010414,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "de39c732-28c0-4017-9008-496aa491b983:0",
+        "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+        "de39c732-28c0-4017-9008-496aa491b983:1"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.5522746443748474,
+          "keyword_score": 3.5885940085363828,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.36076557636260986,
+          "keyword_score": 1.5165600174634486,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.22594815492630005,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.07369542121887207,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.04224270582199097,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "question": "What does deleting a document remove?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5,
+      "retrieval_seconds": 0.028026499960105866,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "de39c732-28c0-4017-9008-496aa491b983:0",
+        "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+        "de39c732-28c0-4017-9008-496aa491b983:1"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.5313600301742554,
+          "keyword_score": 1.4929947916370996,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.33927416801452637,
+          "keyword_score": 1.2408950765882265,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.33005040884017944,
+          "keyword_score": 0.8882339337916941,
+          "rrf_score": 0.031746031746031744,
+          "fusion_rank": 3,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.040606141090393066,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.027174651622772217,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "question": "What does retrieval depth control?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5,
+      "retrieval_seconds": 0.026721799978986382,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "de39c732-28c0-4017-9008-496aa491b983:1",
+        "de39c732-28c0-4017-9008-496aa491b983:0",
+        "a16b6139-9830-40e3-9694-11862af7b2a0:0"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.3709166646003723,
+          "keyword_score": 2.0227149661147727,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.2150123119354248,
+          "keyword_score": 0.5055200058211495,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.18424886465072632,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 2
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.1712772250175476,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.16640281677246094,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "operations.txt",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "Are document instructions trusted?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5,
+      "retrieval_seconds": 0.025583699985872954,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "de39c732-28c0-4017-9008-496aa491b983:0",
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+        "de39c732-28c0-4017-9008-496aa491b983:1"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.48200929164886475,
+          "keyword_score": 2.5363113150153724,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.3536248207092285,
+          "keyword_score": 0.8882339337916941,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.3338494300842285,
+          "keyword_score": 0.735375070767077,
+          "rrf_score": 0.031746031746031744,
+          "fusion_rank": 3,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.17009401321411133,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.12372714281082153,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "question": "Does this project isolate multiple user accounts?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.4,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 5,
+      "retrieval_seconds": 0.02640939998673275,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+        "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+        "de39c732-28c0-4017-9008-496aa491b983:1",
+        "de39c732-28c0-4017-9008-496aa491b983:0"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.2840651273727417,
+          "keyword_score": 3.066031489493045,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.22457414865493774,
+          "keyword_score": 0,
+          "rrf_score": 0.016129032258064516,
+          "fusion_rank": 2,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.1794060468673706,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.17816859483718872,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 2
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.14155656099319458,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        }
+      ]
+    }
+  ]
+}

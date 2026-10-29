@@ -1,0 +1,270 @@
+{
+  "created_at": "2026-10-28T23:34:31.860243+00:00",
+  "mode": "demo",
+  "chat_model": "extractive-demo",
+  "embedding_model": "sha256-bow-256",
+  "examples": 16,
+  "top_k": 5,
+  "summary": {
+    "answer_lexical_f1": 0.7879,
+    "source_recall_at_k": 1.0,
+    "source_precision_at_k": 0.6667,
+    "mrr": 0.9688,
+    "faithfulness_lexical_proxy": 1.0,
+    "citation_support_lexical_proxy": 0.7708,
+    "citation_validity": 0.875,
+    "latency_seconds": 0.0446
+  },
+  "results": [
+    {
+      "question": "What is CiteRAG designed to do?",
+      "answer": "The documents do not provide enough information to answer with citations.",
+      "sources": [],
+      "answer_lexical_f1": 0.3,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 0.0,
+      "citation_validity": 0.0,
+      "reference_answer": "CiteRAG answers questions about uploaded documents with source citations.",
+      "latency_seconds": 0.27
+    },
+    {
+      "question": "Which file types does CiteRAG accept?",
+      "answer": "The documents do not provide enough information to answer with citations.",
+      "sources": [],
+      "answer_lexical_f1": 0.0,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 0.0,
+      "citation_validity": 0.0,
+      "reference_answer": "CiteRAG accepts PDF, Markdown, and plain text files.",
+      "latency_seconds": 0.028
+    },
+    {
+      "question": "What is the maximum upload size?",
+      "answer": "The maximum upload size is 20 MB per file. [1]",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.9474,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "The maximum upload size is 20 MB per file.",
+      "latency_seconds": 0.027
+    },
+    {
+      "question": "How does CiteRAG preserve PDF page numbers?",
+      "answer": "PDF page numbers are preserved as one-based page numbers in chunk metadata. [1]",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.9565,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "PDF page numbers are preserved as one-based page numbers in chunk metadata.",
+      "latency_seconds": 0.028
+    },
+    {
+      "question": "How are document chunks created?",
+      "answer": "Document text is split into overlapping chunks within each page. [2]",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.9524,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "Document text is split into overlapping chunks within each page.",
+      "latency_seconds": 0.028
+    },
+    {
+      "question": "Which embedding model is the default?",
+      "answer": "The default embedding model is text-embedding-3-small. [1]",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.9412,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "The default embedding model is text-embedding-3-small.",
+      "latency_seconds": 0.026
+    },
+    {
+      "question": "Which database stores the vectors?",
+      "answer": "ChromaDB stores document vectors in a persistent local collection. [1]",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.9474,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "ChromaDB stores document vectors in a persistent local collection.",
+      "latency_seconds": 0.032
+    },
+    {
+      "question": "Where is document metadata stored?",
+      "answer": "Deleting a document removes its vectors and its SQLite metadata. [2]",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.3158,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 0.3333,
+      "citation_validity": 1.0,
+      "reference_answer": "SQLite stores document names, chunk counts, and ingestion timestamps.",
+      "latency_seconds": 0.033
+    },
+    {
+      "question": "What does retrieval similarity measure?",
+      "answer": "Retrieval similarity measures vector closeness and does not prove factual correctness. [2]",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.9565,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 0.5,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "Retrieval similarity measures vector closeness and does not prove factual correctness.",
+      "latency_seconds": 0.035
+    },
+    {
+      "question": "How are citation identifiers validated?",
+      "answer": "Citation identifiers are checked against the chunks retrieved for the current question. [1]",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.9565,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "Citation identifiers are checked against the chunks retrieved for the current question.",
+      "latency_seconds": 0.029
+    },
+    {
+      "question": "What happens when evidence is insufficient?",
+      "answer": "The documents do not provide enough information to answer with citations.",
+      "sources": [],
+      "answer_lexical_f1": 0.56,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 0.0,
+      "citation_validity": 1.0,
+      "reference_answer": "When evidence is insufficient, the assistant reports that the documents do not provide enough information.",
+      "latency_seconds": 0.028
+    },
+    {
+      "question": "Can scanned PDFs be searched without OCR?",
+      "answer": "Scanned PDFs require OCR before their text can be indexed. [1]",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.9524,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "Scanned PDFs require OCR before their text can be indexed.",
+      "latency_seconds": 0.031
+    },
+    {
+      "question": "What does deleting a document remove?",
+      "answer": "Deleting a document removes its vectors and its SQLite metadata. [1]",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.9474,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "Deleting a document removes its vectors and its SQLite metadata.",
+      "latency_seconds": 0.027
+    },
+    {
+      "question": "What does retrieval depth control?",
+      "answer": "Retrieval depth controls the maximum number of chunks passed to answer generation. [1]",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.96,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "Retrieval depth controls the maximum number of chunks passed to answer generation.",
+      "latency_seconds": 0.027
+    },
+    {
+      "question": "Are document instructions trusted?",
+      "answer": "Retrieved document instructions are untrusted data and must not override system instructions. [1]",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.9565,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "Retrieved document instructions are untrusted data and must not override system instructions.",
+      "latency_seconds": 0.033
+    },
+    {
+      "question": "Does this project isolate multiple user accounts?",
+      "answer": "This project is a single-user local application without multi-user authentication. [1]",
+      "sources": [
+        "sample.md"
+      ],
+      "answer_lexical_f1": 0.9565,
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "reference_answer": "This project is a single-user local application without multi-user authentication.",
+      "latency_seconds": 0.032
+    }
+  ]
+}

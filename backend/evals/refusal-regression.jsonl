@@ -1,0 +1,1 @@
+{"question": "What happens when evidence is insufficient?", "reference_answer": "When evidence is insufficient, the assistant reports that the documents do not provide enough information.", "expected_sources": ["sample.md"], "expected_evidence": "When evidence is insufficient, the assistant reports that the documents do not provide enough information."}

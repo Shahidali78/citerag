@@ -1,0 +1,35 @@
+# Prepared configuration only. Creating this service incurs hosting/disk charges.
+services:
+  - type: web
+    name: citerag-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: starter
+    numInstances: 1
+    healthCheckPath: /health
+    disk:
+      name: citerag-data
+      mountPath: /app/data
+      sizeGB: 1
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: CITERAG_DEMO
+        value: "false"
+      - key: OPENAI_CHAT_MODEL
+        value: gpt-4.1-mini
+      - key: OPENAI_EMBEDDING_MODEL
+        value: text-embedding-3-small
+      - key: CHROMA_PATH
+        value: /app/data/chroma
+      - key: SQLITE_PATH
+        value: /app/data/metadata.sqlite3
+      - key: EVALUATION_PATH
+        value: /app/data/evaluations/latest.json
+      - key: EVALUATION_HISTORY_PATH
+        value: /app/data/evaluations/runs
+      - key: LOG_QUERY_TEXT
+        value: "false"

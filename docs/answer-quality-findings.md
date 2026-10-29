@@ -1,0 +1,13 @@
+# Answer-quality investigation and frozen correction
+
+The prior dense-vs-reranked development runs differ by 3.80 percentage points of lexical F1 (.8529 versus .8149). Five of the sixteen questions lost F1; eleven were unchanged. Mean answer length increased from 16.31 to 19.63 words under reranking. Every reference token was present in the selected reranked evidence, and the first selected source was unchanged in 15 of 16 examples. These observations support verbosity/paraphrase as an explanation; they are not a controlled causal experiment.
+
+The largest drops included the citation-validation question (16 versus 22 words), the single-user question (24 versus 40), the project-purpose question (45 versus 64), and the OCR question (22 versus 34). The metadata question had the same length but different paraphrasing. The old generation prompt was identical across methods; both source ordering/context size and stochastic generation can still affect wording. There is no evidence here that a missing reference-token context caused those five F1 drops. Token coverage itself does not prove complete semantic support.
+
+The citation-validation answer also added the claim that identifier checks ensure relevance and accuracy, which the quoted document does not establish. Earlier same-model judges gave that answer full support credit. This is a concrete example of why high automated judge averages are not a factual guarantee.
+
+Before authoring/evaluating held-out outputs, the prompt was clarified to answer only requested aspects, prefer one or two sentences for direct facts, retain all parts of multi-part questions, and avoid treating a real citation identifier as proof of truth. Supported facts should precede an explanation of what remains unknown. The old prompt remains in docs/baseline/generation-prompt-v1.txt; the new exact prompt and its hash are frozen in backend/evals/heldout/protocol.json.
+
+The threshold (.2), candidate count (20), final K (5), models, reranker weights, and original corpus were not changed. No held-out answer was used for tuning or selection. The new prompt is applied equally to dense, hybrid, and reranked held-out runs. Historical-vs-held-out differences therefore include new questions and a predeclared prompt clarification; they cannot isolate the prompt effect or prove a general answer-quality improvement.
+
+Inspect docs/answer-quality-analysis.json for all per-question answers, source IDs, lengths, coverage, and F1 deltas. Use semantic correctness, faithfulness, citation support, abstention behavior, and human review together rather than optimizing lexical overlap alone.

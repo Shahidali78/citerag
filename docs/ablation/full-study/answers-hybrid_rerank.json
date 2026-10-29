@@ -1,0 +1,2172 @@
+{
+  "created_at": "2026-10-29T00:03:38.695337+00:00",
+  "mode": "openai",
+  "examples": 16,
+  "chat_model": "gpt-4.1-mini",
+  "embedding_model": "text-embedding-3-small",
+  "dataset_sha256": "1f6bf19184ea398a1f3c99025cd7bd5be7b1d1fbbf78661992dd93b4f0ac2fbe",
+  "corpus_sha256": "60a94e4e3ea1b7ec93dfde5261bddea1c5f40f44152ef79e2c97f95f65b841f8",
+  "corpus": [
+    {
+      "id": "de39c732-28c0-4017-9008-496aa491b983",
+      "filename": "verification.pdf",
+      "chunks": 2,
+      "created_at": "2026-10-28T23:44:33.445998+00:00"
+    },
+    {
+      "id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+      "filename": "operations.txt",
+      "chunks": 1,
+      "created_at": "2026-10-28T23:44:32.812346+00:00"
+    },
+    {
+      "id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+      "filename": "sample.md",
+      "chunks": 2,
+      "created_at": "2026-10-28T23:42:46.097758+00:00"
+    }
+  ],
+  "shared_embedding_batch_seconds": 2.7817148999893107,
+  "embedding_note": "Same real query vectors reused for all configurations. Reported per-row latency excludes this shared batch and optional judge time.",
+  "calibration_note": "Threshold tuned on these same 16 labeled examples, including expected evidence. Results are in-sample and need held-out validation.",
+  "top_k": 5,
+  "retrieval_configuration": {
+    "mode": "hybrid_rerank",
+    "candidates": 20,
+    "top_k": 5,
+    "threshold": 0.2
+  },
+  "evaluation_kind": "answers",
+  "judge_enabled": true,
+  "judge_missing_counts": {
+    "answer_correctness_judge": 0,
+    "faithfulness_judge": 0,
+    "citation_support_judge": 0
+  },
+  "summary": {
+    "source_recall_at_k": 1.0,
+    "source_precision_at_k": 0.9479,
+    "mrr": 1.0,
+    "answer_lexical_f1": 0.7813,
+    "faithfulness_lexical_proxy": 0.888,
+    "citation_support_lexical_proxy": 0.9375,
+    "citation_validity": 1.0,
+    "latency_seconds": 1.3156,
+    "answer_correctness_judge": 1.0,
+    "faithfulness_judge": 1.0,
+    "citation_support_judge": 0.9375
+  },
+  "results": [
+    {
+      "question": "What is CiteRAG designed to do?",
+      "reference_answer": "CiteRAG answers questions about uploaded documents with source citations.",
+      "answer": "CiteRAG is designed to answer questions about uploaded documents with source citations. It accepts PDF, Markdown, and plain text files and processes them by splitting text into overlapping chunks within each page. It uses vector similarity for retrieval but notes that this does not prove factual correctness. CiteRAG ensures citation identifiers correspond to the retrieved document chunks and reports when evidence is insufficient [1].",
+      "raw_answer": "CiteRAG is designed to answer questions about uploaded documents with source citations. It accepts PDF, Markdown, and plain text files and processes them by splitting text into overlapping chunks within each page. It uses vector similarity for retrieval but notes that this does not prove factual correctness. CiteRAG ensures citation identifiers correspond to the retrieved document chunks and reports when evidence is insufficient [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.602
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.602
+        }
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.6015303134918213,
+          "keyword_score": 1.642646819280301,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": 0.44330351099849125,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.2926587462425232,
+          "keyword_score": 0,
+          "rrf_score": 0.016129032258064516,
+          "fusion_rank": 2,
+          "rerank_score": 0.10243056118488311,
+          "selected": false,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.20931601524353027,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": 0.0732606053352356,
+          "selected": false,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.12683641910552979,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": 0.04439274668693542,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.09641408920288086,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": 0.0337449312210083,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ],
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "answer_lexical_f1": 0.25,
+      "faithfulness_lexical_proxy": 0.7455,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 1.5151885999948718,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0,
+      "telemetry": {
+        "request_id": "3f04c6eb-f95c-40f6-a33e-8c5e09e084b2",
+        "stages_seconds": {
+          "retrieval": 0.026319500000681728,
+          "generation": 1.4659225000068545,
+          "judge": 1.332948200055398
+        },
+        "models": {
+          "generation": "gpt-4.1-mini",
+          "judge": "gpt-4.1-mini"
+        },
+        "usage": {
+          "generation": {
+            "input_tokens": 289,
+            "output_tokens": 77,
+            "total_tokens": 366
+          },
+          "judge": {
+            "input_tokens": 506,
+            "output_tokens": 24,
+            "total_tokens": 530
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 1
+      }
+    },
+    {
+      "question": "Which file types does CiteRAG accept?",
+      "reference_answer": "CiteRAG accepts PDF, Markdown, and plain text files.",
+      "answer": "CiteRAG accepts PDF, Markdown, and plain text files [1].",
+      "raw_answer": "CiteRAG accepts PDF, Markdown, and plain text files [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.679
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.679
+        }
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.6787053346633911,
+          "keyword_score": 2.4431317522104212,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": 0.3539308177703638,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.3201589584350586,
+          "keyword_score": 0,
+          "rrf_score": 0.016129032258064516,
+          "fusion_rank": 2,
+          "rerank_score": 0.1120556354522705,
+          "selected": false,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.16201961040496826,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": 0.05670686364173889,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.15141236782073975,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": 0.05299432873725891,
+          "selected": false,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.06227976083755493,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": 0.021797916293144225,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ],
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "answer_lexical_f1": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 1.0665217999485321,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0,
+      "telemetry": {
+        "request_id": "7b8b0420-29a2-4f90-ad88-fcbdc1604008",
+        "stages_seconds": {
+          "retrieval": 0.02581100002862513,
+          "generation": 1.0152780000353232,
+          "judge": 0.9781516999937594
+        },
+        "models": {
+          "generation": "gpt-4.1-mini",
+          "judge": "gpt-4.1-mini"
+        },
+        "usage": {
+          "generation": {
+            "input_tokens": 289,
+            "output_tokens": 17,
+            "total_tokens": 306
+          },
+          "judge": {
+            "input_tokens": 447,
+            "output_tokens": 24,
+            "total_tokens": 471
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 1
+      }
+    },
+    {
+      "question": "What is the maximum upload size?",
+      "reference_answer": "The maximum upload size is 20 MB per file.",
+      "answer": "The maximum upload size is 20 MB per file [1].",
+      "raw_answer": "The maximum upload size is 20 MB per file [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.317
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.317
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.181
+        }
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.31672483682632446,
+          "keyword_score": 2.1064898716813905,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": 0.7608536928892136,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.18110382556915283,
+          "keyword_score": 0.782939521210805,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": 0.2193747480088064,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.16657543182373047,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": 0.05830140113830566,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.12285411357879639,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": 0.042998939752578735,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 2
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.11326724290847778,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": 0.03964353501796722,
+          "selected": false,
+          "filename": "operations.txt",
+          "page": 1
+        }
+      ],
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "answer_lexical_f1": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 1.1231729999999516,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0,
+      "telemetry": {
+        "request_id": "4aae0cf3-d180-4cec-bf63-fe631a7be597",
+        "stages_seconds": {
+          "retrieval": 0.02774009999120608,
+          "generation": 1.0719095999957062,
+          "judge": 1.0250129000050947
+        },
+        "models": {
+          "generation": "gpt-4.1-mini",
+          "judge": "gpt-4.1-mini"
+        },
+        "usage": {
+          "generation": {
+            "input_tokens": 387,
+            "output_tokens": 14,
+            "total_tokens": 401
+          },
+          "judge": {
+            "input_tokens": 439,
+            "output_tokens": 24,
+            "total_tokens": 463
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 2
+      }
+    },
+    {
+      "question": "How does CiteRAG preserve PDF page numbers?",
+      "reference_answer": "PDF page numbers are preserved as one-based page numbers in chunk metadata.",
+      "answer": "CiteRAG preserves PDF page numbers as one-based page numbers in chunk metadata [1].",
+      "raw_answer": "CiteRAG preserves PDF page numbers as one-based page numbers in chunk metadata [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.625
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.625
+        }
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.6252259612083435,
+          "keyword_score": 5.886442972858051,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": 0.5554723858515741,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.378082275390625,
+          "keyword_score": 0,
+          "rrf_score": 0.016129032258064516,
+          "fusion_rank": 2,
+          "rerank_score": 0.13232879638671874,
+          "selected": false,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.17264777421951294,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": 0.06042672097682952,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.09486818313598633,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": 0.03320386409759521,
+          "selected": false,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.05907106399536133,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": 0.020674872398376464,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ],
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "answer_lexical_f1": 0.8182,
+      "faithfulness_lexical_proxy": 0.9091,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 1.0253373000305146,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0,
+      "telemetry": {
+        "request_id": "c744a1f9-8a20-4a09-bad1-c15e5683a645",
+        "stages_seconds": {
+          "retrieval": 0.026858100027311593,
+          "generation": 0.9751318999915384,
+          "judge": 0.9388376999995671
+        },
+        "models": {
+          "generation": "gpt-4.1-mini",
+          "judge": "gpt-4.1-mini"
+        },
+        "usage": {
+          "generation": {
+            "input_tokens": 290,
+            "output_tokens": 20,
+            "total_tokens": 310
+          },
+          "judge": {
+            "input_tokens": 451,
+            "output_tokens": 24,
+            "total_tokens": 475
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 1
+      }
+    },
+    {
+      "question": "How are document chunks created?",
+      "reference_answer": "Document text is split into overlapping chunks within each page.",
+      "answer": "Document text is split into overlapping chunks within each page to create document chunks [1].",
+      "raw_answer": "Document text is split into overlapping chunks within each page to create document chunks [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.419
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.419
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.404
+        }
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.4186442494392395,
+          "keyword_score": 1.5567103467494139,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": 0.3823076674069545,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.4039572477340698,
+          "keyword_score": 1.4929947916370996,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": 0.28731999639865236,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.22487246990203857,
+          "keyword_score": 0.8882339337916941,
+          "rrf_score": 0.031746031746031744,
+          "fusion_rank": 3,
+          "rerank_score": 0.16855258487720626,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.06656944751739502,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": 0.023299306631088257,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 2
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.04443603754043579,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": 0.015552613139152526,
+          "selected": false,
+          "filename": "operations.txt",
+          "page": 1
+        }
+      ],
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "answer_lexical_f1": 0.9091,
+      "faithfulness_lexical_proxy": 0.9167,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 0.8642465999582782,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0,
+      "telemetry": {
+        "request_id": "4fe6f328-1ba6-46ea-a4a9-fb495a50ecdc",
+        "stages_seconds": {
+          "retrieval": 0.02729110000655055,
+          "generation": 0.8143985999631695,
+          "judge": 1.0666374000138603
+        },
+        "models": {
+          "generation": "gpt-4.1-mini",
+          "judge": "gpt-4.1-mini"
+        },
+        "usage": {
+          "generation": {
+            "input_tokens": 386,
+            "output_tokens": 18,
+            "total_tokens": 404
+          },
+          "judge": {
+            "input_tokens": 442,
+            "output_tokens": 24,
+            "total_tokens": 466
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 2
+      }
+    },
+    {
+      "question": "Which embedding model is the default?",
+      "reference_answer": "The default embedding model is text-embedding-3-small.",
+      "answer": "The default embedding model is text-embedding-3-small [1].",
+      "raw_answer": "The default embedding model is text-embedding-3-small [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.262
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.262
+        }
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.26164710521698,
+          "keyword_score": 2.9015445330089653,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": 0.741576486825943,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.1776142120361328,
+          "keyword_score": 0,
+          "rrf_score": 0.016129032258064516,
+          "fusion_rank": 2,
+          "rerank_score": 0.06216497421264648,
+          "selected": false,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.14333868026733398,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": 0.05016853809356689,
+          "selected": false,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.08301633596420288,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": 0.029055717587471008,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 2
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.04955089092254639,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": 0.017342811822891234,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 1
+        }
+      ],
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "answer_lexical_f1": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 1.2141335000051185,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0,
+      "telemetry": {
+        "request_id": "c22fde0a-8b58-4527-a964-cf5c020d54a3",
+        "stages_seconds": {
+          "retrieval": 0.027811800013296306,
+          "generation": 1.1541477999999188,
+          "judge": 0.922559899976477
+        },
+        "models": {
+          "generation": "gpt-4.1-mini",
+          "judge": "gpt-4.1-mini"
+        },
+        "usage": {
+          "generation": {
+            "input_tokens": 287,
+            "output_tokens": 15,
+            "total_tokens": 302
+          },
+          "judge": {
+            "input_tokens": 441,
+            "output_tokens": 24,
+            "total_tokens": 465
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 1
+      }
+    },
+    {
+      "question": "Which database stores the vectors?",
+      "reference_answer": "ChromaDB stores document vectors in a persistent local collection.",
+      "answer": "The vectors are stored in ChromaDB, which stores document vectors in a persistent local collection [1].",
+      "raw_answer": "The vectors are stored in ChromaDB, which stores document vectors in a persistent local collection [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.367
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.367
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.343
+        }
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.3671844005584717,
+          "keyword_score": 1.8060946729698741,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": 0.43823611173440025,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.34323054552078247,
+          "keyword_score": 0.782939521210805,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": 0.2400157281182757,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.2263479232788086,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": 0.079221773147583,
+          "selected": false,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.12361091375350952,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": 0.04326381981372833,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 2
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.09189897775650024,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": 0.03216464221477509,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 1
+        }
+      ],
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "answer_lexical_f1": 0.8182,
+      "faithfulness_lexical_proxy": 0.8462,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 1.023391199996695,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0,
+      "telemetry": {
+        "request_id": "4cc73630-3648-4db4-b738-790e842adcc2",
+        "stages_seconds": {
+          "retrieval": 0.0382001000107266,
+          "generation": 0.9542951000039466,
+          "judge": 1.098155300016515
+        },
+        "models": {
+          "generation": "gpt-4.1-mini",
+          "judge": "gpt-4.1-mini"
+        },
+        "usage": {
+          "generation": {
+            "input_tokens": 386,
+            "output_tokens": 22,
+            "total_tokens": 408
+          },
+          "judge": {
+            "input_tokens": 447,
+            "output_tokens": 24,
+            "total_tokens": 471
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 2
+      }
+    },
+    {
+      "question": "Where is document metadata stored?",
+      "reference_answer": "SQLite stores document names, chunk counts, and ingestion timestamps.",
+      "answer": "Document metadata is stored in SQLite, which keeps information such as document names, chunk counts, and ingestion timestamps [2].",
+      "raw_answer": "Document metadata is stored in SQLite, which keeps information such as document names, chunk counts, and ingestion timestamps [2].",
+      "sources": [
+        "sample.md"
+      ],
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.388
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.397
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.388
+        }
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.3968477249145508,
+          "keyword_score": 1.4929947916370996,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": 0.282907087874305,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.3876168131828308,
+          "keyword_score": 1.2408950765882265,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": 0.2247996333881126,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.3042994737625122,
+          "keyword_score": 0.8882339337916941,
+          "rrf_score": 0.031746031746031744,
+          "fusion_rank": 3,
+          "rerank_score": 0.16138145119696967,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.11801278591156006,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": 0.04130447506904602,
+          "selected": false,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.07245522737503052,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": 0.02535932958126068,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ],
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "answer_lexical_f1": 0.6154,
+      "faithfulness_lexical_proxy": 0.7647,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 1.1485633000265807,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0,
+      "telemetry": {
+        "request_id": "2d78767b-ee0b-4a2e-9912-b33fe45593f3",
+        "stages_seconds": {
+          "retrieval": 0.026112499996088445,
+          "generation": 1.0994191000354476,
+          "judge": 1.0216343999491073
+        },
+        "models": {
+          "generation": "gpt-4.1-mini",
+          "judge": "gpt-4.1-mini"
+        },
+        "usage": {
+          "generation": {
+            "input_tokens": 386,
+            "output_tokens": 25,
+            "total_tokens": 411
+          },
+          "judge": {
+            "input_tokens": 450,
+            "output_tokens": 24,
+            "total_tokens": 474
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 2
+      }
+    },
+    {
+      "question": "What does retrieval similarity measure?",
+      "reference_answer": "Retrieval similarity measures vector closeness and does not prove factual correctness.",
+      "answer": "Retrieval similarity measures vector closeness and does not prove factual correctness [1].",
+      "raw_answer": "Retrieval similarity measures vector closeness and does not prove factual correctness [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.277
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.277
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.271
+        }
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.2771154046058655,
+          "keyword_score": 1.30600493875127,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": 0.40671196315098807,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.2712956666946411,
+          "keyword_score": 0.782939521210805,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": 0.21483852052912625,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.11985123157501221,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": 0.04194793105125427,
+          "selected": false,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.10883671045303345,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": 0.038092848658561704,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.07542425394058228,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": 0.026398488879203794,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ],
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "answer_lexical_f1": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 1.2279595999862067,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0,
+      "telemetry": {
+        "request_id": "50787d97-cafa-4b2c-b941-00df52a7cdf2",
+        "stages_seconds": {
+          "retrieval": 0.03328299999702722,
+          "generation": 1.163477200025227,
+          "judge": 1.435098799993284
+        },
+        "models": {
+          "generation": "gpt-4.1-mini",
+          "judge": "gpt-4.1-mini"
+        },
+        "usage": {
+          "generation": {
+            "input_tokens": 386,
+            "output_tokens": 17,
+            "total_tokens": 403
+          },
+          "judge": {
+            "input_tokens": 444,
+            "output_tokens": 24,
+            "total_tokens": 468
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 2
+      }
+    },
+    {
+      "question": "How are citation identifiers validated?",
+      "reference_answer": "Citation identifiers are checked against the chunks retrieved for the current question.",
+      "answer": "Citation identifiers are validated by checking them against the chunks retrieved for the current question to ensure their relevance and accuracy [1].",
+      "raw_answer": "Citation identifiers are validated by checking them against the chunks retrieved for the current question to ensure their relevance and accuracy [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.37
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.37
+        }
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.3698110580444336,
+          "keyword_score": 1.600969865860241,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": 0.4722173711901836,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.2354748249053955,
+          "keyword_score": 0,
+          "rrf_score": 0.016129032258064516,
+          "fusion_rank": 2,
+          "rerank_score": 0.08241618871688842,
+          "selected": false,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.18447542190551758,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": 0.06456639766693115,
+          "selected": false,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.1455005407333374,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": 0.050925189256668085,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 2
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.12854355573654175,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": 0.04499024450778961,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 1
+        }
+      ],
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "answer_lexical_f1": 0.6452,
+      "faithfulness_lexical_proxy": 0.6,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 1.4645105000236072,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0,
+      "telemetry": {
+        "request_id": "99ca7287-1e73-455c-94aa-8cbd6ff3decd",
+        "stages_seconds": {
+          "retrieval": 0.029305799980647862,
+          "generation": 1.3959331999649294,
+          "judge": 1.1911974999820814
+        },
+        "models": {
+          "generation": "gpt-4.1-mini",
+          "judge": "gpt-4.1-mini"
+        },
+        "usage": {
+          "generation": {
+            "input_tokens": 286,
+            "output_tokens": 25,
+            "total_tokens": 311
+          },
+          "judge": {
+            "input_tokens": 451,
+            "output_tokens": 24,
+            "total_tokens": 475
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 1
+      }
+    },
+    {
+      "question": "What happens when evidence is insufficient?",
+      "reference_answer": "When evidence is insufficient, the assistant reports that the documents do not provide enough information.",
+      "answer": "When evidence is insufficient, the assistant reports that the documents do not provide enough information [1].",
+      "raw_answer": "When evidence is insufficient, the assistant reports that the documents do not provide enough information [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.207
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.207
+        }
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.2307785153388977,
+          "keyword_score": 0,
+          "rrf_score": 0.01639344262295082,
+          "fusion_rank": 2,
+          "rerank_score": 0.08077248036861419,
+          "selected": false,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.20733696222305298,
+          "keyword_score": 2.401454798790361,
+          "rrf_score": 0.03252247488101534,
+          "fusion_rank": 1,
+          "rerank_score": 0.47945528763693424,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.16293567419052124,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": 0.05702748596668243,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.10684537887573242,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": 0.037395882606506343,
+          "selected": false,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.0734412670135498,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": 0.02570444345474243,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ],
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "answer_lexical_f1": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 1.226391899981536,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0,
+      "telemetry": {
+        "request_id": "ea429b01-53f0-4fa2-acae-a386246b468e",
+        "stages_seconds": {
+          "retrieval": 0.02590709994547069,
+          "generation": 1.1770500999991782,
+          "judge": 2.361539100005757
+        },
+        "models": {
+          "generation": "gpt-4.1-mini",
+          "judge": "gpt-4.1-mini"
+        },
+        "usage": {
+          "generation": {
+            "input_tokens": 287,
+            "output_tokens": 20,
+            "total_tokens": 307
+          },
+          "judge": {
+            "input_tokens": 451,
+            "output_tokens": 24,
+            "total_tokens": 475
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 1
+      }
+    },
+    {
+      "question": "Can scanned PDFs be searched without OCR?",
+      "reference_answer": "Scanned PDFs require OCR before their text can be indexed.",
+      "answer": "No, scanned PDFs cannot be searched without OCR. The documents state that \"Scanned PDFs require OCR before their text can be indexed,\" implying that without OCR, the text is not available for searching [1][2].",
+      "raw_answer": "No, scanned PDFs cannot be searched without OCR. The documents state that \"Scanned PDFs require OCR before their text can be indexed,\" implying that without OCR, the text is not available for searching [1][2].",
+      "sources": [
+        "sample.md",
+        "sample.md"
+      ],
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.552
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.361
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.552
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.361
+        }
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.5522746443748474,
+          "keyword_score": 3.5885940085363828,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": 0.4560334654869168,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.36076557636260986,
+          "keyword_score": 1.5165600174634486,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": 0.38900529168263365,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.22594815492630005,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": 0.07908185422420501,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.07369542121887207,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": 0.025793397426605223,
+          "selected": false,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.04224270582199097,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": 0.014784947037696837,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ],
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "answer_lexical_f1": 0.5882,
+      "faithfulness_lexical_proxy": 0.7083,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 1.378061500028707,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0,
+      "telemetry": {
+        "request_id": "4027a7f0-60cc-4f0e-ae87-9782bd730c9d",
+        "stages_seconds": {
+          "retrieval": 0.028839999984484166,
+          "generation": 1.32642209995538,
+          "judge": 1.0660077999928035
+        },
+        "models": {
+          "generation": "gpt-4.1-mini",
+          "judge": "gpt-4.1-mini"
+        },
+        "usage": {
+          "generation": {
+            "input_tokens": 388,
+            "output_tokens": 45,
+            "total_tokens": 433
+          },
+          "judge": {
+            "input_tokens": 640,
+            "output_tokens": 24,
+            "total_tokens": 664
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 2
+      }
+    },
+    {
+      "question": "What does deleting a document remove?",
+      "reference_answer": "Deleting a document removes its vectors and its SQLite metadata.",
+      "answer": "Deleting a document removes its vectors and its SQLite metadata [1].",
+      "raw_answer": "Deleting a document removes its vectors and its SQLite metadata [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.531
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.531
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "marker": "[2]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "# CiteRAG reference guide CiteRAG answers questions about uploaded documents with source citations. CiteRAG accepts PDF, Markdown, and plain text files. The maximum upload size is 20 MB per file. PDF page numbers are preserved as one-based page numbers in chunk metadata. Document text is split into overlapping chunks within each page. The default embedding model is text-embedding-3-small. ChromaDB stores document vectors in a persistent local collection. SQLite stores document names, chunk counts, and ingestion timestamps. Retrieval similarity measures vector closeness and does not prove factual correctness. Citation identifiers are checked against the chunks retrieved for the current question. When evidence is insufficient, the assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes",
+          "similarity": 0.339
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[3]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.33
+        }
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.5313600301742554,
+          "keyword_score": 1.4929947916370996,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": 0.42175819066421005,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.33927416801452637,
+          "keyword_score": 1.2408950765882265,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": 0.35452813890830487,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.33005040884017944,
+          "keyword_score": 0.8882339337916941,
+          "rrf_score": 0.031746031746031744,
+          "fusion_rank": 3,
+          "rerank_score": 0.20536486350555555,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.040606141090393066,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": 0.014212149381637573,
+          "selected": false,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.027174651622772217,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": 0.009511128067970276,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ],
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.6667,
+      "mrr": 1.0,
+      "answer_lexical_f1": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 0.9902989999973215,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0,
+      "telemetry": {
+        "request_id": "ff98b874-221d-44c8-8583-5d38168d1675",
+        "stages_seconds": {
+          "retrieval": 0.028012099966872483,
+          "generation": 0.9371426999568939,
+          "judge": 1.258443399972748
+        },
+        "models": {
+          "generation": "gpt-4.1-mini",
+          "judge": "gpt-4.1-mini"
+        },
+        "usage": {
+          "generation": {
+            "input_tokens": 420,
+            "output_tokens": 14,
+            "total_tokens": 434
+          },
+          "judge": {
+            "input_tokens": 352,
+            "output_tokens": 24,
+            "total_tokens": 376
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 3
+      }
+    },
+    {
+      "question": "What does retrieval depth control?",
+      "reference_answer": "Retrieval depth controls the maximum number of chunks passed to answer generation.",
+      "answer": "Retrieval depth controls the maximum number of chunks passed to answer generation [1].",
+      "raw_answer": "Retrieval depth controls the maximum number of chunks passed to answer generation [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.371
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.371
+        }
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.3709166646003723,
+          "keyword_score": 2.0227149661147727,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": 0.4395424041490654,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.2150123119354248,
+          "keyword_score": 0.5055200058211495,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": 0.19513934636340052,
+          "selected": false,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.18424886465072632,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": 0.06448710262775421,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 2
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.1712772250175476,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": 0.059947028756141656,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.16640281677246094,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": 0.05824098587036133,
+          "selected": false,
+          "filename": "operations.txt",
+          "page": 1
+        }
+      ],
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "answer_lexical_f1": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 3.173962600005325,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0,
+      "telemetry": {
+        "request_id": "4c75d02c-f372-49ee-8b45-432978dcc122",
+        "stages_seconds": {
+          "retrieval": 0.027486300037708133,
+          "generation": 3.122051200014539,
+          "judge": 1.1204429999925196
+        },
+        "models": {
+          "generation": "gpt-4.1-mini",
+          "judge": "gpt-4.1-mini"
+        },
+        "usage": {
+          "generation": {
+            "input_tokens": 200,
+            "output_tokens": 17,
+            "total_tokens": 217
+          },
+          "judge": {
+            "input_tokens": 357,
+            "output_tokens": 24,
+            "total_tokens": 381
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 1
+      }
+    },
+    {
+      "question": "Are document instructions trusted?",
+      "reference_answer": "Retrieved document instructions are untrusted data and must not override system instructions.",
+      "answer": "Document instructions are not trusted data and must not override system instructions [1].",
+      "raw_answer": "Document instructions are not trusted data and must not override system instructions [1].",
+      "sources": [
+        "sample.md"
+      ],
+      "citations": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.482
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.482
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "marker": "[2]",
+          "document_id": "de39c732-28c0-4017-9008-496aa491b983",
+          "filename": "verification.pdf",
+          "page": 1,
+          "snippet": "The document review window is 14 days.",
+          "similarity": 0.354
+        }
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.48200929164886475,
+          "keyword_score": 2.5363113150153724,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": 0.45246357276592475,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.3536248207092285,
+          "keyword_score": 0.8882339337916941,
+          "rrf_score": 0.03225806451612903,
+          "fusion_rank": 2,
+          "rerank_score": 0.2032090580142818,
+          "selected": true,
+          "filename": "verification.pdf",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.3338494300842285,
+          "keyword_score": 0.735375070767077,
+          "rrf_score": 0.031746031746031744,
+          "fusion_rank": 3,
+          "rerank_score": 0.1962876712955318,
+          "selected": false,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.17009401321411133,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": 0.05953290462493896,
+          "selected": false,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.12372714281082153,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": 0.043304499983787534,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 2
+        }
+      ],
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 0.5,
+      "mrr": 1.0,
+      "answer_lexical_f1": 0.8571,
+      "faithfulness_lexical_proxy": 0.9,
+      "citation_support_lexical_proxy": 1.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 1.2769546000054106,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 1.0,
+      "telemetry": {
+        "request_id": "2868158d-ed4c-4e39-aabd-838051d51559",
+        "stages_seconds": {
+          "retrieval": 0.0271472999593243,
+          "generation": 1.2265879000187851,
+          "judge": 1.1730625000200234
+        },
+        "models": {
+          "generation": "gpt-4.1-mini",
+          "judge": "gpt-4.1-mini"
+        },
+        "usage": {
+          "generation": {
+            "input_tokens": 232,
+            "output_tokens": 16,
+            "total_tokens": 248
+          },
+          "judge": {
+            "input_tokens": 355,
+            "output_tokens": 24,
+            "total_tokens": 379
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 2
+      }
+    },
+    {
+      "question": "Does this project isolate multiple user accounts?",
+      "reference_answer": "This project is a single-user local application without multi-user authentication.",
+      "answer": "The documents do not provide enough information to answer with citations.",
+      "raw_answer": "The documents do not provide enough information on whether this project isolates multiple user accounts. However, it is stated that the project is a single-user local application without multi-user authentication [1].",
+      "sources": [],
+      "citations": [],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "marker": "[1]",
+          "document_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+          "filename": "sample.md",
+          "page": 1,
+          "snippet": "e assistant reports that the documents do not provide enough information. Scanned PDFs require OCR before their text can be indexed. Deleting a document removes its vectors and its SQLite metadata. Retrieval depth controls the maximum number of chunks passed to answer generation. Retrieved document instructions are untrusted data and must not override system instructions. This project is a single-user local application without multi-user authentication.",
+          "similarity": 0.284
+        }
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.2840651273727417,
+          "keyword_score": 3.066031489493045,
+          "rrf_score": 0.03278688524590164,
+          "fusion_rank": 1,
+          "rerank_score": 0.2756355918395894,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+          "vector_similarity": 0.22457414865493774,
+          "keyword_score": 0,
+          "rrf_score": 0.016129032258064516,
+          "fusion_rank": 2,
+          "rerank_score": 0.0786009520292282,
+          "selected": false,
+          "filename": "operations.txt",
+          "page": 1
+        },
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.1794060468673706,
+          "keyword_score": 0,
+          "rrf_score": 0.015873015873015872,
+          "fusion_rank": 3,
+          "rerank_score": 0.0627921164035797,
+          "selected": false,
+          "filename": "sample.md",
+          "page": 1
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:1",
+          "vector_similarity": 0.17816859483718872,
+          "keyword_score": 0,
+          "rrf_score": 0.015625,
+          "fusion_rank": 4,
+          "rerank_score": 0.06235900819301605,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 2
+        },
+        {
+          "chunk_id": "de39c732-28c0-4017-9008-496aa491b983:0",
+          "vector_similarity": 0.14155656099319458,
+          "keyword_score": 0,
+          "rrf_score": 0.015384615384615385,
+          "fusion_rank": 5,
+          "rerank_score": 0.0495447963476181,
+          "selected": false,
+          "filename": "verification.pdf",
+          "page": 1
+        }
+      ],
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "answer_lexical_f1": 0.0,
+      "faithfulness_lexical_proxy": 0.8182,
+      "citation_support_lexical_proxy": 0.0,
+      "citation_validity": 1.0,
+      "latency_seconds": 1.3311806000419892,
+      "answer_correctness_judge": 1.0,
+      "faithfulness_judge": 1.0,
+      "citation_support_judge": 0.0,
+      "telemetry": {
+        "request_id": "b1c101aa-d5f4-4572-8dac-b3a9e11b00e8",
+        "stages_seconds": {
+          "retrieval": 0.026175200007855892,
+          "generation": 1.2804563000099733,
+          "judge": 1.0704328999854624
+        },
+        "models": {
+          "generation": "gpt-4.1-mini",
+          "judge": "gpt-4.1-mini"
+        },
+        "usage": {
+          "generation": {
+            "input_tokens": 202,
+            "output_tokens": 38,
+            "total_tokens": 240
+          },
+          "judge": {
+            "input_tokens": 186,
+            "output_tokens": 24,
+            "total_tokens": 210
+          }
+        },
+        "estimated_cost_usd": null,
+        "retrieval_mode": "hybrid_rerank",
+        "retrieved_count": 5,
+        "selected_count": 1
+      }
+    }
+  ]
+}

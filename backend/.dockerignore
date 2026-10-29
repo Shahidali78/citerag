@@ -1,0 +1,15 @@
+.venv
+.env
+data
+__pycache__
+.pytest_cache
+tests
+scripts
+**/__pycache__
+**/*.pyc
+evals/results.json
+evals/*-results.json
+evals/runs
+evals/ablations
+.pytest-tmp
+*.log

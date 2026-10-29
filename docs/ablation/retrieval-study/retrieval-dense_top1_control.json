@@ -1,0 +1,450 @@
+{
+  "created_at": "2026-10-29T00:01:51.262985+00:00",
+  "mode": "openai",
+  "examples": 16,
+  "chat_model": "gpt-4.1-mini",
+  "embedding_model": "text-embedding-3-small",
+  "dataset_sha256": "1f6bf19184ea398a1f3c99025cd7bd5be7b1d1fbbf78661992dd93b4f0ac2fbe",
+  "corpus_sha256": "60a94e4e3ea1b7ec93dfde5261bddea1c5f40f44152ef79e2c97f95f65b841f8",
+  "corpus": [
+    {
+      "id": "de39c732-28c0-4017-9008-496aa491b983",
+      "filename": "verification.pdf",
+      "chunks": 2,
+      "created_at": "2026-10-28T23:44:33.445998+00:00"
+    },
+    {
+      "id": "a16b6139-9830-40e3-9694-11862af7b2a0",
+      "filename": "operations.txt",
+      "chunks": 1,
+      "created_at": "2026-10-28T23:44:32.812346+00:00"
+    },
+    {
+      "id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11",
+      "filename": "sample.md",
+      "chunks": 2,
+      "created_at": "2026-10-28T23:42:46.097758+00:00"
+    }
+  ],
+  "shared_embedding_batch_seconds": 2.7817148999893107,
+  "embedding_note": "Same real query vectors reused for all configurations. Reported per-row latency excludes this shared batch and optional judge time.",
+  "calibration_note": "Threshold tuned on these same 16 labeled examples, including expected evidence. Results are in-sample and need held-out validation.",
+  "top_k": 1,
+  "retrieval_configuration": {
+    "mode": "dense",
+    "candidates": 20,
+    "top_k": 1,
+    "threshold": 0
+  },
+  "evaluation_kind": "retrieval_only",
+  "summary": {
+    "source_recall_at_k": 1.0,
+    "source_precision_at_k": 1.0,
+    "mrr": 1.0,
+    "expected_evidence_coverage": 0.9449,
+    "retrieval_seconds": 0.0248,
+    "selected_count": 1
+  },
+  "results": [
+    {
+      "question": "What is CiteRAG designed to do?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 1,
+      "retrieval_seconds": 0.028792899975087494,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.6015303134918213,
+          "keyword_score": 0.0,
+          "rrf_score": null,
+          "fusion_rank": null,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "Which file types does CiteRAG accept?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 1,
+      "retrieval_seconds": 0.0224875999847427,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.6787053346633911,
+          "keyword_score": 0.0,
+          "rrf_score": null,
+          "fusion_rank": null,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "What is the maximum upload size?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 1,
+      "retrieval_seconds": 0.026112799998372793,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.31672483682632446,
+          "keyword_score": 0.0,
+          "rrf_score": null,
+          "fusion_rank": null,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "How does CiteRAG preserve PDF page numbers?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 1,
+      "retrieval_seconds": 0.023835400003008544,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.6252259612083435,
+          "keyword_score": 0.0,
+          "rrf_score": null,
+          "fusion_rank": null,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "How are document chunks created?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 1,
+      "retrieval_seconds": 0.027029199991375208,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.4186442494392395,
+          "keyword_score": 0.0,
+          "rrf_score": null,
+          "fusion_rank": null,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "Which embedding model is the default?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 1,
+      "retrieval_seconds": 0.025444199971389025,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.26164710521698,
+          "keyword_score": 0.0,
+          "rrf_score": null,
+          "fusion_rank": null,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "Which database stores the vectors?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 1,
+      "retrieval_seconds": 0.023441500030457973,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.3671844005584717,
+          "keyword_score": 0.0,
+          "rrf_score": null,
+          "fusion_rank": null,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "Where is document metadata stored?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 0.3333,
+      "selected_count": 1,
+      "retrieval_seconds": 0.02536059997510165,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.3968477249145508,
+          "keyword_score": 0.0,
+          "rrf_score": null,
+          "fusion_rank": null,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "What does retrieval similarity measure?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 1,
+      "retrieval_seconds": 0.02446290000807494,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.2771154046058655,
+          "keyword_score": 0.0,
+          "rrf_score": null,
+          "fusion_rank": null,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "How are citation identifiers validated?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 1,
+      "retrieval_seconds": 0.023549699981231242,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+          "vector_similarity": 0.3698110580444336,
+          "keyword_score": 0.0,
+          "rrf_score": null,
+          "fusion_rank": null,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "What happens when evidence is insufficient?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 0.7857,
+      "selected_count": 1,
+      "retrieval_seconds": 0.023640899977181107,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.2307785153388977,
+          "keyword_score": 0.0,
+          "rrf_score": null,
+          "fusion_rank": null,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "Can scanned PDFs be searched without OCR?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 1,
+      "retrieval_seconds": 0.026821799983736128,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.5522746443748474,
+          "keyword_score": 0.0,
+          "rrf_score": null,
+          "fusion_rank": null,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "What does deleting a document remove?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 1,
+      "retrieval_seconds": 0.023413099988829345,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.5313600301742554,
+          "keyword_score": 0.0,
+          "rrf_score": null,
+          "fusion_rank": null,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "What does retrieval depth control?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 1,
+      "retrieval_seconds": 0.024772699980530888,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.3709166646003723,
+          "keyword_score": 0.0,
+          "rrf_score": null,
+          "fusion_rank": null,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "Are document instructions trusted?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 1,
+      "retrieval_seconds": 0.022589600004721433,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.48200929164886475,
+          "keyword_score": 0.0,
+          "rrf_score": null,
+          "fusion_rank": null,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "question": "Does this project isolate multiple user accounts?",
+      "source_recall_at_k": 1.0,
+      "source_precision_at_k": 1.0,
+      "mrr": 1.0,
+      "expected_evidence_coverage": 1.0,
+      "selected_count": 1,
+      "retrieval_seconds": 0.02517100004479289,
+      "selected_chunk_ids": [
+        "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1"
+      ],
+      "diagnostics": [
+        {
+          "chunk_id": "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+          "vector_similarity": 0.2840651273727417,
+          "keyword_score": 0.0,
+          "rrf_score": null,
+          "fusion_rank": null,
+          "rerank_score": null,
+          "selected": true,
+          "filename": "sample.md",
+          "page": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,363 @@
+[
+  {
+    "question": "What is CiteRAG designed to do?",
+    "dense_f1": 0.4,
+    "reranked_f1": 0.25,
+    "delta": -0.15,
+    "dense_words": 45,
+    "reranked_words": 64,
+    "reference": "CiteRAG answers questions about uploaded documents with source citations.",
+    "dense_answer": "CiteRAG is designed to answer questions about uploaded documents with source citations. It accepts PDF, Markdown, and plain text files, indexes their text through chunking and embeddings, and retrieves relevant document chunks to provide answers with citations, ensuring transparency about the source of information [1].",
+    "reranked_answer": "CiteRAG is designed to answer questions about uploaded documents with source citations. It accepts PDF, Markdown, and plain text files and processes them by splitting text into overlapping chunks within each page. It uses vector similarity for retrieval but notes that this does not prove factual correctness. CiteRAG ensures citation identifiers correspond to the retrieved document chunks and reports when evidence is insufficient [1].",
+    "reference_token_coverage_in_reranked_evidence": 1.0,
+    "dense_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+      "de39c732-28c0-4017-9008-496aa491b983:0",
+      "de39c732-28c0-4017-9008-496aa491b983:1"
+    ],
+    "reranked_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+    ]
+  },
+  {
+    "question": "Which file types does CiteRAG accept?",
+    "dense_f1": 1.0,
+    "reranked_f1": 1.0,
+    "delta": 0.0,
+    "dense_words": 9,
+    "reranked_words": 9,
+    "reference": "CiteRAG accepts PDF, Markdown, and plain text files.",
+    "dense_answer": "CiteRAG accepts PDF, Markdown, and plain text files [1].",
+    "reranked_answer": "CiteRAG accepts PDF, Markdown, and plain text files [1].",
+    "reference_token_coverage_in_reranked_evidence": 1.0,
+    "dense_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "de39c732-28c0-4017-9008-496aa491b983:0",
+      "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+      "de39c732-28c0-4017-9008-496aa491b983:1"
+    ],
+    "reranked_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+    ]
+  },
+  {
+    "question": "What is the maximum upload size?",
+    "dense_f1": 1.0,
+    "reranked_f1": 1.0,
+    "delta": 0.0,
+    "dense_words": 10,
+    "reranked_words": 10,
+    "reference": "The maximum upload size is 20 MB per file.",
+    "dense_answer": "The maximum upload size is 20 MB per file [1].",
+    "reranked_answer": "The maximum upload size is 20 MB per file [1].",
+    "reference_token_coverage_in_reranked_evidence": 1.0,
+    "dense_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "de39c732-28c0-4017-9008-496aa491b983:0",
+      "de39c732-28c0-4017-9008-496aa491b983:1",
+      "a16b6139-9830-40e3-9694-11862af7b2a0:0"
+    ],
+    "reranked_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1"
+    ]
+  },
+  {
+    "question": "How does CiteRAG preserve PDF page numbers?",
+    "dense_f1": 0.8182,
+    "reranked_f1": 0.8182,
+    "delta": 0.0,
+    "dense_words": 13,
+    "reranked_words": 13,
+    "reference": "PDF page numbers are preserved as one-based page numbers in chunk metadata.",
+    "dense_answer": "CiteRAG preserves PDF page numbers as one-based page numbers in chunk metadata [1].",
+    "reranked_answer": "CiteRAG preserves PDF page numbers as one-based page numbers in chunk metadata [1].",
+    "reference_token_coverage_in_reranked_evidence": 1.0,
+    "dense_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "de39c732-28c0-4017-9008-496aa491b983:0",
+      "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+      "de39c732-28c0-4017-9008-496aa491b983:1"
+    ],
+    "reranked_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+    ]
+  },
+  {
+    "question": "How are document chunks created?",
+    "dense_f1": 0.9091,
+    "reranked_f1": 0.9091,
+    "delta": 0.0,
+    "dense_words": 15,
+    "reranked_words": 15,
+    "reference": "Document text is split into overlapping chunks within each page.",
+    "dense_answer": "Document text is split into overlapping chunks within each page to create document chunks [1].",
+    "reranked_answer": "Document text is split into overlapping chunks within each page to create document chunks [1].",
+    "reference_token_coverage_in_reranked_evidence": 1.0,
+    "dense_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "de39c732-28c0-4017-9008-496aa491b983:0",
+      "de39c732-28c0-4017-9008-496aa491b983:1",
+      "a16b6139-9830-40e3-9694-11862af7b2a0:0"
+    ],
+    "reranked_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1"
+    ]
+  },
+  {
+    "question": "Which embedding model is the default?",
+    "dense_f1": 1.0,
+    "reranked_f1": 1.0,
+    "delta": 0.0,
+    "dense_words": 7,
+    "reranked_words": 7,
+    "reference": "The default embedding model is text-embedding-3-small.",
+    "dense_answer": "The default embedding model is text-embedding-3-small [1].",
+    "reranked_answer": "The default embedding model is text-embedding-3-small [1].",
+    "reference_token_coverage_in_reranked_evidence": 1.0,
+    "dense_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+      "de39c732-28c0-4017-9008-496aa491b983:1",
+      "de39c732-28c0-4017-9008-496aa491b983:0"
+    ],
+    "reranked_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+    ]
+  },
+  {
+    "question": "Which database stores the vectors?",
+    "dense_f1": 0.8182,
+    "reranked_f1": 0.8182,
+    "delta": 0.0,
+    "dense_words": 16,
+    "reranked_words": 16,
+    "reference": "ChromaDB stores document vectors in a persistent local collection.",
+    "dense_answer": "The vectors are stored in ChromaDB, which stores document vectors in a persistent local collection [1].",
+    "reranked_answer": "The vectors are stored in ChromaDB, which stores document vectors in a persistent local collection [1].",
+    "reference_token_coverage_in_reranked_evidence": 1.0,
+    "dense_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+      "de39c732-28c0-4017-9008-496aa491b983:1",
+      "de39c732-28c0-4017-9008-496aa491b983:0"
+    ],
+    "reranked_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1"
+    ]
+  },
+  {
+    "question": "Where is document metadata stored?",
+    "dense_f1": 0.6667,
+    "reranked_f1": 0.6154,
+    "delta": -0.0513,
+    "dense_words": 19,
+    "reranked_words": 19,
+    "reference": "SQLite stores document names, chunk counts, and ingestion timestamps.",
+    "dense_answer": "Document metadata such as document names, chunk counts, and ingestion timestamps are stored in SQLite, as stated in [2].",
+    "reranked_answer": "Document metadata is stored in SQLite, which keeps information such as document names, chunk counts, and ingestion timestamps [2].",
+    "reference_token_coverage_in_reranked_evidence": 1.0,
+    "dense_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "de39c732-28c0-4017-9008-496aa491b983:0",
+      "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+      "de39c732-28c0-4017-9008-496aa491b983:1"
+    ],
+    "reranked_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+    ]
+  },
+  {
+    "question": "What does retrieval similarity measure?",
+    "dense_f1": 1.0,
+    "reranked_f1": 1.0,
+    "delta": 0.0,
+    "dense_words": 12,
+    "reranked_words": 12,
+    "reference": "Retrieval similarity measures vector closeness and does not prove factual correctness.",
+    "dense_answer": "Retrieval similarity measures vector closeness and does not prove factual correctness [1].",
+    "reranked_answer": "Retrieval similarity measures vector closeness and does not prove factual correctness [1].",
+    "reference_token_coverage_in_reranked_evidence": 1.0,
+    "dense_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+      "de39c732-28c0-4017-9008-496aa491b983:0",
+      "de39c732-28c0-4017-9008-496aa491b983:1"
+    ],
+    "reranked_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1"
+    ]
+  },
+  {
+    "question": "How are citation identifiers validated?",
+    "dense_f1": 0.8,
+    "reranked_f1": 0.6452,
+    "delta": -0.1548,
+    "dense_words": 16,
+    "reranked_words": 22,
+    "reference": "Citation identifiers are checked against the chunks retrieved for the current question.",
+    "dense_answer": "Citation identifiers are validated by checking them against the chunks retrieved for the current question [1].",
+    "reranked_answer": "Citation identifiers are validated by checking them against the chunks retrieved for the current question to ensure their relevance and accuracy [1].",
+    "reference_token_coverage_in_reranked_evidence": 1.0,
+    "dense_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+      "de39c732-28c0-4017-9008-496aa491b983:1",
+      "de39c732-28c0-4017-9008-496aa491b983:0"
+    ],
+    "reranked_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+    ]
+  },
+  {
+    "question": "What happens when evidence is insufficient?",
+    "dense_f1": 1.0,
+    "reranked_f1": 1.0,
+    "delta": 0.0,
+    "dense_words": 16,
+    "reranked_words": 16,
+    "reference": "When evidence is insufficient, the assistant reports that the documents do not provide enough information.",
+    "dense_answer": "When evidence is insufficient, the assistant reports that the documents do not provide enough information [1][2].",
+    "reranked_answer": "When evidence is insufficient, the assistant reports that the documents do not provide enough information [1].",
+    "reference_token_coverage_in_reranked_evidence": 1.0,
+    "dense_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "de39c732-28c0-4017-9008-496aa491b983:0",
+      "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+      "de39c732-28c0-4017-9008-496aa491b983:1"
+    ],
+    "reranked_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+    ]
+  },
+  {
+    "question": "Can scanned PDFs be searched without OCR?",
+    "dense_f1": 0.6897,
+    "reranked_f1": 0.5882,
+    "delta": -0.1015,
+    "dense_words": 22,
+    "reranked_words": 34,
+    "reference": "Scanned PDFs require OCR before their text can be indexed.",
+    "dense_answer": "The documents state that scanned PDFs require OCR before their text can be indexed, implying they cannot be searched without OCR [1][2].",
+    "reranked_answer": "No, scanned PDFs cannot be searched without OCR. The documents state that \"Scanned PDFs require OCR before their text can be indexed,\" implying that without OCR, the text is not available for searching [1][2].",
+    "reference_token_coverage_in_reranked_evidence": 1.0,
+    "dense_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "de39c732-28c0-4017-9008-496aa491b983:0",
+      "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+      "de39c732-28c0-4017-9008-496aa491b983:1"
+    ],
+    "reranked_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0"
+    ]
+  },
+  {
+    "question": "What does deleting a document remove?",
+    "dense_f1": 1.0,
+    "reranked_f1": 1.0,
+    "delta": 0.0,
+    "dense_words": 11,
+    "reranked_words": 11,
+    "reference": "Deleting a document removes its vectors and its SQLite metadata.",
+    "dense_answer": "Deleting a document removes its vectors and its SQLite metadata [1][2].",
+    "reranked_answer": "Deleting a document removes its vectors and its SQLite metadata [1].",
+    "reference_token_coverage_in_reranked_evidence": 1.0,
+    "dense_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "de39c732-28c0-4017-9008-496aa491b983:0",
+      "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+      "de39c732-28c0-4017-9008-496aa491b983:1"
+    ],
+    "reranked_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "de39c732-28c0-4017-9008-496aa491b983:0"
+    ]
+  },
+  {
+    "question": "What does retrieval depth control?",
+    "dense_f1": 1.0,
+    "reranked_f1": 1.0,
+    "delta": 0.0,
+    "dense_words": 13,
+    "reranked_words": 13,
+    "reference": "Retrieval depth controls the maximum number of chunks passed to answer generation.",
+    "dense_answer": "Retrieval depth controls the maximum number of chunks passed to answer generation [1].",
+    "reranked_answer": "Retrieval depth controls the maximum number of chunks passed to answer generation [1].",
+    "reference_token_coverage_in_reranked_evidence": 1.0,
+    "dense_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "de39c732-28c0-4017-9008-496aa491b983:1",
+      "de39c732-28c0-4017-9008-496aa491b983:0",
+      "a16b6139-9830-40e3-9694-11862af7b2a0:0"
+    ],
+    "reranked_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1"
+    ]
+  },
+  {
+    "question": "Are document instructions trusted?",
+    "dense_f1": 0.8571,
+    "reranked_f1": 0.8571,
+    "delta": 0.0,
+    "dense_words": 13,
+    "reranked_words": 13,
+    "reference": "Retrieved document instructions are untrusted data and must not override system instructions.",
+    "dense_answer": "Document instructions are not trusted data and must not override system instructions [1].",
+    "reranked_answer": "Document instructions are not trusted data and must not override system instructions [1].",
+    "reference_token_coverage_in_reranked_evidence": 1.0,
+    "dense_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "de39c732-28c0-4017-9008-496aa491b983:0",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+      "de39c732-28c0-4017-9008-496aa491b983:1"
+    ],
+    "reranked_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "de39c732-28c0-4017-9008-496aa491b983:0"
+    ]
+  },
+  {
+    "question": "Does this project isolate multiple user accounts?",
+    "dense_f1": 0.6875,
+    "reranked_f1": 0.5366,
+    "delta": -0.1509,
+    "dense_words": 24,
+    "reranked_words": 40,
+    "reference": "This project is a single-user local application without multi-user authentication.",
+    "dense_answer": "The documents state that this project is a single-user local application without multi-user authentication [1]. Therefore, this project does not isolate multiple user accounts.",
+    "reranked_answer": "The documents do not provide enough information to confirm that this project isolates multiple user accounts. However, it is stated that this project is a single-user local application without multi-user authentication, implying it does not support multiple user accounts [1].",
+    "reference_token_coverage_in_reranked_evidence": 1.0,
+    "dense_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1",
+      "a16b6139-9830-40e3-9694-11862af7b2a0:0",
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:0",
+      "de39c732-28c0-4017-9008-496aa491b983:1",
+      "de39c732-28c0-4017-9008-496aa491b983:0"
+    ],
+    "reranked_chunk_ids": [
+      "750f7ad8-cff3-41fd-b596-9ac5a8e9ed11:1"
+    ]
+  }
+]

@@ -1,0 +1,17 @@
+# Independent question-level evaluation plan
+
+This phase freezes retrieval and generation before new measurements. The corpus stays the same three public synthetic documents and five indexed chunks. The 16 development/calibration examples and all historical reports remain unchanged.
+
+Create 40 new questions: 6 direct facts, 6 paraphrases, 6 multi-chunk combinations, 5 comparisons, 5 distracting-keyword questions, 4 citation-support questions, and 8 unanswerable questions. Exact source quotes, page numbers, and acceptable chunk IDs make references auditable. A separate 12-question final-test set is reserved and not executed. These are new questions over a known tiny corpus, not unseen-document/domain generalization. The author has seen the development benchmark; there is no claim of blind external annotation.
+
+A predeclared prompt clarification was justified solely by old development outputs: excessive unrequested feature lists and the unsupported statement that identifier checks ensure relevance/accuracy. Preserve the old prompt as generation-prompt-v1.txt. The new version asks for requested aspects only and explicitly separates citation existence from truth. This is not a lexical-overlap optimization and is applied identically to all three held-out configurations. Historical-vs-new comparisons therefore also include this prompt change; no causal claim about its benefit is made.
+
+Freeze dense K=5, hybrid candidates=20/K=5, and hybrid_rerank candidates=20/K=5/threshold=.2, with the existing lightweight reranker and generation prompt. No threshold grid, prompt selection, reranking-weight changes, or model selection may use held-out answers. Any future adjustment needs development data and a newly frozen final assessment. The reserved final set requires explicit execution opt-in and is not used here.
+
+Inspect the prior lexical F1 change using existing outputs, lengths, support coverage, and semantic judges before deciding whether a generation change is justified. Do not equate lexical overlap with correctness. Preserve settings unless evidence from the old development reports justifies a predeclared correction; record any correction before new data is evaluated.
+
+Run all three methods on the same new questions and corpus. Embed questions once, generate fresh answers, reuse only exactly identical judge inputs, and checkpoint paid work. Report latency excluding shared embedding and judges, plus their separate measurements. Save models, hashes, options, prompt, source evidence, tokens, raw outputs, and all failures.
+
+For unanswerable questions, source retrieval recall/precision/MRR and lexical answer F1 are not applicable rather than automatic successes or failures. Report abstention correctness separately. Report valid-marker scores only where raw markers exist and show answerable citation coverage to avoid hiding missing citations. Model-judged correctness includes abstention; faithfulness/support are not applicable for a correct non-factual refusal. Distinguish legacy filename metrics from stronger gold-evidence-group/chunk metrics and expose denominators.
+
+After analysis, update documentation and portfolio copy honestly, test backend/frontend/browser/API/monitoring paths, review source diffs and secret exclusions, and record deployment blockers. No GitHub push, public API exposure, or infrastructure creation is authorized. Request release approval only after the local deliverables are concrete and reviewable.
