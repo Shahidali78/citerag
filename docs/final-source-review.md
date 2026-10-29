@@ -1,3 +1,5 @@
+> Historical record for the original publication. For the protected showcase/live feature, see [current verification](protected-portfolio-verification.md), [security model](security.md) and [deployment gates](deployment.md).
+
 # Final source review
 
 Reviewed the existing application plus new evaluation modules and source-only Git --no-index changes. The project directory has no real Git repository yet; a temporary ignored Git metadata directory was used to validate ignore behavior and inventory candidates. There are no source commits, remotes or pushes from this work.

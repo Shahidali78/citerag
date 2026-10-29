@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:portfolio": "node scripts/test-portfolio.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

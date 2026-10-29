@@ -9,7 +9,7 @@ def test_immutable_history_and_safe_identifiers():
     assert first!=second and read_run(first)['label']=='first'
     assert len(list_runs())==2
     with pytest.raises(ValueError):read_run('../../.env')
-    with TestClient(app) as api:
+    with TestClient(app, headers={'Authorization': 'Bearer fixture-only-owner-token-not-for-deployment'}) as api:
         assert len(api.get('/evaluations/runs').json())==2
         assert api.get('/evaluations/runs/'+first).json()['mode']=='openai'
         assert api.get('/evaluations/runs/not-a-run').status_code==404

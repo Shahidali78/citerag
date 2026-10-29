@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 type Row = { question: string; answerable?: boolean; strict_abstention?: number | null; evidence_recall_at_k?: number | null; answer?: string; reference_answer?: string; latency_seconds?: number; retrieval_seconds?: number; citation_validity?: number | null; source_recall_at_k?: number | null; answer_correctness_judge?: number | null; faithfulness_judge?: number | null; citation_support_judge?: number | null; selected_chunk_ids?: string[] };
 type Report = { dataset_split?: string; evaluation_protocol?: string; metric_denominators?: Record<string,number>; answerable_examples?: number; unanswerable_examples?: number; available?: boolean; message?: string; run_id?: string; label?: string; mode?: string; created_at?: string; updated_at?: string; chat_model?: string; embedding_model?: string; examples?: number; top_k?: number; evaluation_kind?: string; summary?: Record<string, number | null>; results?: Row[]; judge_missing_counts?: Record<string, number>; retrieval_configuration?: {mode: string; threshold: number; candidates: number}; calibration_note?: string; embedding_note?: string };
-const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API = '/api';
 const explanations: Record<string,string> = {
  source_recall_at_k: 'Expected source documents found among selected evidence.', source_precision_at_k: 'Selected chunks belonging to expected source documents; denominator is actual selected count.',
  mrr: 'Reciprocal rank of the first expected source.', answer_lexical_f1: 'Token overlap with the reference, excluding citation numbers. A lexical proxy, not semantic correctness.',

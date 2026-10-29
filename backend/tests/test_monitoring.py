@@ -9,7 +9,7 @@ from app.security import safe_filename, RateLimiter
 def test_metrics_privacy_and_request_id(monkeypatch):
     monkeypatch.setattr(main, 'limiter', RateLimiter())
     question = 'PRIVATE_QUESTION_DO_NOT_LOG'
-    with TestClient(app) as api:
+    with TestClient(app, headers={'Authorization': 'Bearer fixture-only-owner-token-not-for-deployment'}) as api:
         r=api.post('/chat',json={'question':question})
         assert r.headers['x-request-id'] == r.json()['telemetry']['request_id']
         report=api.get('/monitoring').json()
@@ -33,7 +33,7 @@ def test_usage_and_optional_pricing(monkeypatch):
 def test_rate_limit_and_validation(monkeypatch):
     monkeypatch.setattr(main,'limiter',RateLimiter())
     monkeypatch.setattr(config,'RATE_LIMIT_REQUESTS',1)
-    with TestClient(app) as api:
+    with TestClient(app, headers={'Authorization': 'Bearer fixture-only-owner-token-not-for-deployment'}) as api:
         assert api.post('/chat',json={'question':'hello'}).status_code == 200
         r=api.post('/chat',json={'question':'again'})
         assert r.status_code == 429 and r.headers['retry-after']
@@ -52,7 +52,7 @@ def test_legacy_question_logging_disabled():
     db.close()
 
 def test_untrusted_origins_and_hosts_are_rejected():
-    with TestClient(app) as api:
+    with TestClient(app, headers={'Authorization': 'Bearer fixture-only-owner-token-not-for-deployment'}) as api:
         assert api.post('/chat',json={'question':'q'},headers={'Origin':'https://untrusted.example'}).status_code==403
         assert api.post('/chat',json={'question':'q'},headers={'Origin':'http://testserver'}).status_code==200
         assert api.get('/health',headers={'Host':'untrusted.example'}).status_code==400
@@ -66,12 +66,12 @@ def test_metrics_retention(monkeypatch):
 def test_chunked_upload_body_is_bounded(monkeypatch):
     monkeypatch.setattr(config,'MAX_UPLOAD_BYTES',3)
     header=b'--boundary\r\nContent-Disposition: form-data; name="file"; filename="a.txt"\r\n\r\n'
-    with TestClient(app) as api:
+    with TestClient(app, headers={'Authorization': 'Bearer fixture-only-owner-token-not-for-deployment'}) as api:
         response=api.post('/documents',content=iter([header,b'x'*(1024*1024+10),b'\r\n--boundary--\r\n']),headers={'Content-Type':'multipart/form-data; boundary=boundary'})
         assert response.status_code==413
 
 def test_health_docs_and_monitoring_do_not_inflate_request_metrics():
-    with TestClient(app) as api:
+    with TestClient(app, headers={'Authorization': 'Bearer fixture-only-owner-token-not-for-deployment'}) as api:
         for path in ['/health','/docs','/openapi.json','/monitoring']:
             assert api.get(path).status_code==200
         assert api.get('/monitoring').json()['total_requests']==0

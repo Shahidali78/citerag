@@ -1,14 +1,15 @@
+const backend = process.env.CITERAG_TEST_BACKEND_URL || 'http://localhost:8000';
 import { test, expect } from '@playwright/test';
 
 const live = process.env.CITERAG_TEST_MODE === 'openai';
 test.beforeEach(async ({ request }) => {
-  const health = await (await request.get('http://localhost:8000/health')).json();
+  const health = await (await request.get(`${backend}/health`)).json();
   expect(health.mode, 'Live tests require explicit CITERAG_TEST_MODE=openai to authorize API calls').toBe(live ? 'openai' : 'demo');
 });
 
 test('upload, ask, inspect evidence, copy, clear and delete', async ({ page, request }) => {
-  const docs = await (await request.get('http://localhost:8000/documents')).json();
-  for (const doc of docs) if (doc.filename === 'browser-guide.txt') await request.delete(`http://localhost:8000/documents/${doc.id}`);
+  const docs = await (await request.get(`${backend}/documents`)).json();
+  for (const doc of docs) if (doc.filename === 'browser-guide.txt') await request.delete(`${backend}/documents/${doc.id}`);
   await page.goto('/');
   await expect(page.getByText(live ? 'OpenAI configured' : 'Offline demo', { exact: true })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
@@ -34,7 +35,7 @@ test('upload, ask, inspect evidence, copy, clear and delete', async ({ page, req
 });
 
 test('retrieval settings, diagnostics, and monitoring controls', async ({page,request}) => {
-  const configuration=await (await request.get('http://localhost:8000/retrieval/config')).json();
+  const configuration=await (await request.get(`${backend}/retrieval/config`)).json();
   let payload: {retrieval_mode?:string;candidate_count?:number;relevance_threshold?:number}={};
   await page.route('**/chat',route=>{
     payload=route.request().postDataJSON();
@@ -82,8 +83,8 @@ test('error handling and safe Markdown citations', async ({ page }) => {
 });
 
 test('drag and drop upload and unsupported file error', async ({ page, request }) => {
-  const docs = await (await request.get('http://localhost:8000/documents')).json();
-  for (const doc of docs) if (doc.filename === 'drop-test.txt') await request.delete(`http://localhost:8000/documents/${doc.id}`);
+  const docs = await (await request.get(`${backend}/documents`)).json();
+  for (const doc of docs) if (doc.filename === 'drop-test.txt') await request.delete(`${backend}/documents/${doc.id}`);
   await page.goto('/');
   await page.locator('input[type=file]').setInputFiles({name:'bad.exe',mimeType:'application/octet-stream',buffer:Buffer.from('invalid')});
   await expect(page.locator('.error[role=alert]')).toContainText('Only PDF');

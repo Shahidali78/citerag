@@ -4,7 +4,7 @@ services:
     name: citerag-api
     runtime: docker
     dockerfilePath: ./backend/Dockerfile
-    dockerContext: ./backend
+    dockerContext: .
     plan: starter
     numInstances: 1
     healthCheckPath: /health
@@ -13,6 +13,10 @@ services:
       mountPath: /app/data
       sizeGB: 1
     envVars:
+      - key: CITERAG_ACCESS_MODE
+        value: showcase
+      - key: CITERAG_ACCESS_TOKEN
+        sync: false
       - key: OPENAI_API_KEY
         sync: false
       - key: CORS_ORIGINS

@@ -12,7 +12,7 @@ from app.store import save_document, collection
 
 @pytest.fixture
 def api():
-    with TestClient(app) as client:
+    with TestClient(app, headers={'Authorization': 'Bearer fixture-only-owner-token-not-for-deployment'}) as client:
         yield client
 
 @pytest.mark.parametrize('filename,data,status', [('bad.exe',b'abc',415), ('empty.txt',b'  ',422), ('bad.pdf',b'invalid',422), ('bad.txt',b'\xff',422)])
