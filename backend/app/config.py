@@ -42,6 +42,22 @@ CHAT_OUTPUT_PRICE = os.getenv('CHAT_OUTPUT_USD_PER_MILLION')
 EMBEDDING_PRICE = os.getenv('EMBEDDING_USD_PER_MILLION')
 EVALUATION_HISTORY_PATH = Path(os.getenv('EVALUATION_HISTORY_PATH', str(BASE_DIR / 'evals' / 'runs')))
 
+# Safe on a fresh deployment: showcase routes never use the private corpus or API.
+ACCESS_MODE = os.getenv('CITERAG_ACCESS_MODE', 'showcase')
+ACCESS_TOKEN = os.getenv('CITERAG_ACCESS_TOKEN', '')
+MAX_OUTPUT_TOKENS = int(os.getenv('MAX_OUTPUT_TOKENS', '800'))
+MAX_CONTEXT_CHARS = int(os.getenv('MAX_CONTEXT_CHARS', '24000'))
+DAILY_REQUEST_LIMIT = int(os.getenv('DAILY_REQUEST_LIMIT', '50'))
+DAILY_TOKEN_LIMIT = int(os.getenv('DAILY_TOKEN_LIMIT', '200000'))
+DAILY_USD_LIMIT = float(os.getenv('DAILY_USD_LIMIT', '1'))
+MAX_STORED_CHUNKS = int(os.getenv('MAX_STORED_CHUNKS', '5000'))
+if ACCESS_MODE not in {'showcase', 'live'}:
+    raise ValueError('CITERAG_ACCESS_MODE must be showcase or live')
+if not (1 <= MAX_OUTPUT_TOKENS <= 4096 and 1000 <= MAX_CONTEXT_CHARS <= 50000
+        and DAILY_REQUEST_LIMIT > 0 and DAILY_TOKEN_LIMIT > 0 and 0 < DAILY_USD_LIMIT <= 100
+        and MAX_STORED_CHUNKS > 0):
+    raise ValueError('Invalid live usage bounds')
+
 if RETRIEVAL_MODE not in {'dense', 'hybrid', 'hybrid_rerank'}:
     raise ValueError('RETRIEVAL_MODE must be dense, hybrid, or hybrid_rerank')
 if not (1 <= FINAL_TOP_K <= 12 and 1 <= CANDIDATE_COUNT <= 100 and 0 <= RELEVANCE_THRESHOLD <= 1):

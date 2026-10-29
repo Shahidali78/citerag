@@ -4,39 +4,46 @@ permissions:
   contents: read
 jobs:
   backend:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         working-directory: backend
     env:
       CITERAG_DEMO: "true"
       OPENAI_API_KEY: ""
+      CITERAG_ACCESS_MODE: showcase
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: "3.12"
           cache: pip
-          cache-dependency-path: backend/requirements.txt
+          cache-dependency-path: |
+            backend/requirements.txt
+            backend/requirements-dev.txt
+            backend/requirements.lock.txt
       - run: python -m pip install --upgrade 'pip>=26.2,<27' -r requirements-dev.txt -c requirements.lock.txt
       - run: python -m pip check
       - run: python -m pytest -q
       - run: python scripts/audit_dependencies.py
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         if: always()
         with:
           name: python-dependency-audit
           path: backend/data/dependency-audit.json
+          retention-days: 7
   frontend:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
     defaults:
       run:
         working-directory: frontend
     env:
       NEXT_TELEMETRY_DISABLED: "1"
+      OPENAI_API_KEY: ""
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: "22"
           cache: npm
@@ -45,3 +52,13 @@ jobs:
       - run: npm run typecheck
       - run: npm run build
       - run: npm audit --audit-level=high
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements.lock.txt
+      - name: Install isolated browser fixture dependencies
+        run: python -m pip install -r ../backend/requirements.txt -c ../backend/requirements.lock.txt
+      - run: npx playwright install --with-deps chromium
+      - name: Showcase and authenticated browser checks (no paid API calls)
+        run: npm run test:portfolio

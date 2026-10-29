@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test';
 
 test('latest selected evaluation wins when older requests finish later',async({page})=>{
- const API='http://localhost:8000';
+ const API='**/api';
  const older='11111111-1111-4111-8111-111111111111';
  const newer='22222222-2222-4222-8222-222222222222';
  const base={available:true,mode:'openai',examples:1,top_k:5,summary:{source_recall_at_k:1},results:[{question:'Baseline example',answer:'Baseline answer'}]};

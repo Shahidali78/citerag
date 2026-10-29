@@ -38,7 +38,29 @@ class DemoClient:
 @lru_cache(maxsize=1)
 def _real_client():
     # The SDK performs bounded exponential-backoff retries for transient errors.
-    return OpenAI(timeout=config.OPENAI_TIMEOUT, max_retries=config.OPENAI_RETRIES)
+    return BudgetedClient(OpenAI(timeout=config.OPENAI_TIMEOUT, max_retries=config.OPENAI_RETRIES))
+
+
+class BudgetedClient:
+    """Every real call, including CLI evaluations, passes the persistent budget."""
+    def __init__(self, client):
+        self.client = client
+        self.embeddings = SimpleNamespace(create=self.embed)
+        self.responses = SimpleNamespace(create=self.respond)
+
+    def embed(self, **kwargs):
+        from .budget import reserve_call
+        reserve_call('embedding', kwargs)
+        return self.client.embeddings.create(**kwargs)
+
+    def respond(self, **kwargs):
+        from .budget import reserve_call
+        kwargs['max_output_tokens'] = config.MAX_OUTPUT_TOKENS
+        kwargs['store'] = False
+        reserve_call('generation', kwargs)
+        return self.client.responses.create(**kwargs)
 
 def get_client():
+    if config.ACCESS_MODE == 'showcase':
+        raise RuntimeError('Showcase never instantiates a model client')
     return DemoClient() if demo_enabled() else _real_client()

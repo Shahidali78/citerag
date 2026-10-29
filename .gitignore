@@ -26,6 +26,8 @@ backend/evals/ablations/
 backend/evals/heldout-results/
 **/*.sqlite3*
 **/*.db
+**/*.budget*
+**/*.metrics*
 
 # Preserve paid-work checkpoints locally; publish complete public sample reports only.
 docs/heldout/**/generation-cache.json

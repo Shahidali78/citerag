@@ -4,7 +4,7 @@ services:
     name: citerag-api
     runtime: docker
     dockerfilePath: ./backend/Dockerfile
-    dockerContext: ./backend
+    dockerContext: .
     plan: starter
     numInstances: 1
     healthCheckPath: /health
@@ -13,8 +13,10 @@ services:
       mountPath: /app/data
       sizeGB: 1
     envVars:
-      - key: OPENAI_API_KEY
-        sync: false
+      - key: CITERAG_ACCESS_MODE
+        value: showcase
+      # Showcase needs no credentials. Add owner/model secrets manually only
+      # when enabling protected live mode after the deployment review.
       - key: CORS_ORIGINS
         sync: false
       - key: CITERAG_DEMO

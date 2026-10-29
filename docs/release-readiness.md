@@ -1,3 +1,5 @@
+> Historical record for the original publication. For the protected showcase/live feature, see [current verification](protected-portfolio-verification.md), [security model](security.md) and [deployment gates](deployment.md).
+
 # Local release readiness
 
 ## GitHub source preparation

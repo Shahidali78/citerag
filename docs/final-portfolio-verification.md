@@ -1,3 +1,5 @@
+> Historical record for the original publication. For the protected showcase/live feature, see [current verification](protected-portfolio-verification.md), [security model](security.md) and [deployment gates](deployment.md).
+
 # Final portfolio verification
 
 Verified locally on Windows on 29 October 2026 (Europe/Rome). No public GitHub push, deployment, paid infrastructure creation or social post was performed. The backend .env and key were preserved; real OpenAI mode remains enabled.

@@ -1,64 +1,106 @@
-# Deployment preparation
+# Protected portfolio deployment runbook
 
-Nothing has been pushed, made public, deployed, or provisioned. The files below are prepared locally. Review the actual hosting price and access protection before approving resource creation.
+Configuration is prepared, not deployed. Creating hosting services/disks or enabling a paid plan requires owner approval. Merging the feature PR also requires separate approval.
 
-## Practical topology
+## Choose the exposure model
 
-Use Vercel for the frontend and one Render Docker web service for FastAPI, with a persistent disk holding Chroma, document metadata, metrics, and evaluation history. A small VM running Docker Compose is another straightforward single-host option. Keep one API process/replica because local SQLite and Chroma files are not shared distributed databases.
+**Public showcase:** backend `CITERAG_ACCESS_MODE=showcase`. Only bundled synthetic documents, exact saved responses and genuine saved reports are exposed. No OpenAI key, token or paid inference is needed. Do not expose private runtime monitoring or allow uploads. This is the recommended initial recruiter-facing experience.
 
-Render documents that only data under the disk mount survives redeploys and restarts, and disk-backed services cannot scale to multiple instances. See [persistent disk constraints](https://render.com/docs/disks). Free Render services cannot attach persistent disks and spin down after idle time; they are unsuitable for this persistent local-store design. See [free service limitations](https://render.com/docs/free).
+**Protected live demonstration:** one API process/replica, durable disk, owner-supplied access token and restricted OpenAI project. All data/model routes are authorized on the backend. The Next.js gateway provides the owner session without revealing credentials to JavaScript. Do not enable live mode until storage, TLS, limits and recovery are verified.
 
-Budget for backend compute, disk storage, OpenAI usage, and the frontend plan appropriate to your usage. Choose the instance size after measuring memory with your corpus. An optional cross-encoder needs substantially more RAM than the tested lightweight reranker. Verify current amounts on [Render pricing](https://render.com/pricing) and [Vercel pricing](https://vercel.com/pricing); no paid resources were created and no fixed monthly cost is promised here.
+Use Vercel for Next.js and one Render Docker service for FastAPI, or a single host with Docker Compose. The gateway uses a server-only backend origin; browsers always use `/api` on the frontend. Keep the backend private/restricted at the network edge when practical, while retaining API authentication regardless of ingress controls.
 
-## Render backend steps after approval
+## Current provider constraints and estimated costs
 
-1. Review the public repository contents and security exception first. Do not publish .env, private documents, databases, or private evaluation files.
-2. Import `render.yaml` as a Blueprint or create one Docker web service using build context `backend` and Dockerfile `backend/Dockerfile`. Blueprint fields follow the [official reference](https://render.com/docs/blueprint-spec).
-3. Choose a paid instance suitable for the measured workload. The prepared Blueprint starts with the starter plan and a 1 GB disk at `/app/data`; those are explicit paid resources, not a free deployment. Increase memory if needed.
-4. Set OPENAI_API_KEY as a secret, CITERAG_DEMO=false, and CORS_ORIGINS to the exact HTTPS frontend origin without a trailing slash. Include the API HTTPS origin as a second explicit origin if using Swagger Try it out behind a TLS-terminating proxy. Render's external hostname is accepted automatically; set ALLOWED_HOSTS explicitly if using a custom API hostname.
-5. Keep CHROMA_PATH=/app/data/chroma, SQLITE_PATH=/app/data/metadata.sqlite3, EVALUATION_PATH=/app/data/evaluations/latest.json, and EVALUATION_HISTORY_PATH=/app/data/evaluations/runs. Configure retention, request limits, timeout, and pricing only with reviewed values.
-6. The image runs as UID 10001. Verify the mounted disk is writable by that UID before accepting the service. Disk ownership on a hosting platform is not verified locally; resolve ownership through the platform's supported provisioning procedure if it differs. Do not make the application root-owned as a workaround.
-7. Use /health as the health-check path. The image binds PORT supplied by the host. HTTPS is terminated by the platform. Health confirms process/configuration, not a live OpenAI charge or valid billing.
-8. Upload sample documents through the protected UI and verify an answer, a PDF page citation, monitoring usage, deletion, and persistence after restart. New deployments start with empty data; local Chroma files are not silently uploaded.
+Official documentation checked 2026-10-29:
 
-## Vercel frontend steps after approval
+- [Vercel Hobby](https://vercel.com/docs/plans/hobby) is free and limited to personal, non-commercial use. Review whether your portfolio use qualifies; do not start a trial or upgrade automatically. [Pricing](https://vercel.com/pricing) lists Pro at $20/month with usage terms/taxes in addition.
+- [Render pricing](https://render.com/pricing?trk=article-ssr-frontend-pulse_little-text-block) lists $7/month for 512 MB and $25/month for 2 GB compute, plus persistent disk at $0.25/GB/month. These are planning estimates, not a checkout quote or guarantee the smallest instance can run Chroma reliably. Measure memory on the actual image/corpus before selecting a plan.
+- [Render free-service limits](https://render.com/docs/free) include ephemeral local storage and idle spin-down. Free services cannot attach persistent disks. A free ephemeral service can only be considered for immutable showcase data with no live/private state, accepting cold starts and hosting limits; it is unsuitable for the live corpus/ledger design.
+- [Persistent disks](https://render.com/docs/disks) retain only data under the mount and constrain scaling/deployment behavior. The prepared Blueprint retains its paid starter/1 GB disk configuration as an explicit proposal; it has not been applied.
 
-1. Import the same repository and set Root Directory to `frontend`, framework Next.js, install command `npm ci`, and build command `npm run build`. See [monorepo configuration](https://vercel.com/docs/monorepos).
-2. Set NEXT_PUBLIC_API_URL to the public HTTPS backend origin before building. This is a browser-reachable URL, never `http://backend:8000`. Keep the OpenAI key off Vercel frontend environment variables and browser code.
-3. If NEXT_PUBLIC_API_URL changes, make a new deployment: public variables are build-time values. See [Vercel environment variables](https://vercel.com/docs/environment-variables).
-4. Set the backend CORS_ORIGINS to that exact frontend origin. Do not allow arbitrary preview domains with a wildcard. Configure preview access deliberately.
-5. Before public traffic, put both frontend and API behind access protection for the intended single user. Protecting only the UI leaves the unauthenticated API reachable. CORS, trusted hosts, and per-process rate limits are not authentication or a spending quota.
+A 1 GB disk plus $7 compute is approximately **$7.25/month**, excluding taxes, bandwidth/build overages and OpenAI; 2 GB compute plus that disk is about **$25.25/month**. Vercel Hobby adds $0 only if eligible/within limits. Live model usage is extra. `DAILY_USD_LIMIT=1` is an application reservation allowance, not a promised $1/day invoice cap. Showcase makes no model calls. Recheck official prices and obtain approval before provisioning anything.
 
-## Local Docker commands
+## Backend configuration
 
-With Docker Desktop's Linux engine running and backend/.env configured:
+Render build context is repository root, Dockerfile `backend/Dockerfile`. It copies only app/sample artifacts and dependencies, including showcase reports; no environment file is baked in. The startup command is:
+
+```sh
+uvicorn app.main:app --host 0.0.0.0 --port "$PORT" --no-access-log
+```
+
+Run **one worker and one replica**. Health check `/health` confirms process/configuration, not provider billing or a paid test. Render terminates public HTTPS; keep the canonical host in `ALLOWED_HOSTS` (the Render-provided external hostname is added automatically).
+
+| Backend variable | Showcase | Protected live |
+| --- | --- | --- |
+| CITERAG_ACCESS_MODE | showcase | live |
+| CITERAG_ACCESS_TOKEN | Not needed | Owner-supplied high-entropy secret, 32+ chars |
+| CITERAG_DEMO | Not used by showcase | false for real OpenAI |
+| OPENAI_API_KEY | Not needed | Secret in backend host only |
+| OPENAI_CHAT_MODEL | Not used | gpt-4.1-mini unless deliberately changed |
+| OPENAI_EMBEDDING_MODEL | Not used | text-embedding-3-small; re-index if changed |
+| CORS_ORIGINS | Exact frontend HTTPS origin | Same; never wildcard previews |
+| ALLOWED_HOSTS | Explicit API hostnames | Same |
+| CHROMA_PATH | Unused runtime store | /app/data/chroma |
+| SQLITE_PATH | Unused runtime store | /app/data/metadata.sqlite3 |
+| EVALUATION_PATH | Bundled reports are used | /app/data/evaluations/latest.json |
+| EVALUATION_HISTORY_PATH | Bundled allowlist is used | /app/data/evaluations/runs |
+| CHAT_INPUT_USD_PER_MILLION / CHAT_OUTPUT_USD_PER_MILLION / EMBEDDING_USD_PER_MILLION | Not needed | Positive owner-reviewed current model rates |
+| DAILY_REQUEST_LIMIT / DAILY_TOKEN_LIMIT / DAILY_USD_LIMIT | No paid calls | Defaults 50 / 200000 / 1; review deliberately |
+| MAX_OUTPUT_TOKENS / MAX_CONTEXT_CHARS | Saved examples only | Defaults 800 / 24000 |
+| RETRIEVAL_MODE | Saved hybrid examples | hybrid; dense also recommended |
+| LOG_QUERY_TEXT / METRICS_RETENTION_DAYS | No private telemetry exposed | false / 30 |
+
+Mount durable storage at `/app/data`, including the `.budget`, `.metrics` and metadata/vector files. UID 10001 must be able to write the mounted directory. Disk ownership is not yet runtime-verified; use host-supported provisioning, not a root-running application workaround. Never copy local private corpus data to hosting implicitly.
+
+## Frontend configuration
+
+Vercel root directory `frontend`, framework Next.js, install `npm ci`, build `npm run build`, Node 22. Server-only environment:
+
+```text
+CITERAG_BACKEND_URL=https://your-api-host.example
+CITERAG_FRONTEND_ORIGIN=https://your-canonical-frontend.example
+CITERAG_LOCAL_HTTP=false
+```
+
+Use actual hostnames at deployment; example domains are not resources. Do not set an OpenAI key on Vercel, use NEXT_PUBLIC secrets, or expose the owner token through client variables. `NEXT_PUBLIC_API_URL` is obsolete: the browser uses the same-origin gateway. Configure the exact canonical frontend origin because mutation checks do not trust forwarded host headers or wildcard previews. Test login/cookie handling on HTTPS and on the chosen preview policy. All API data responses are no-store; do not add a shared cache in front of authenticated requests.
+
+Gateway requests time out after 180 seconds; hosting-plan request duration/body limits can be stricter. Vercel Functions currently cap request/response bodies (see [limits](https://vercel.com/docs/functions/limitations)); the backend's 20 MB upload allowance does not override the host limit. Small portfolio files work within the gateway limit; large live uploads require a separately reviewed protected direct-upload architecture or a host with sufficient body limits. Do not claim a hosted 20 MB upload was tested.
+
+## Local Docker verification
 
 ```powershell
 docker compose config --quiet
 docker compose up --build -d
 docker compose ps
+# After checking health and the UI:
+docker compose restart backend
+docker compose down
 ```
 
-Open http://localhost:3000. Compose publishes both services only on loopback. The browser uses localhost:8000 on the host; no frontend server-side request requires a Docker service hostname. Container health checks correctly use loopback inside their own container. If adding server-side API fetching later, use the backend service hostname internally and keep the public browser URL separate.
+Compose defaults to showcase and publishes ports only on 127.0.0.1. The frontend server reaches `http://backend:8000`; browsers reach localhost:3000. Only loopback Compose enables the local HTTP cookie override. Health checks use container loopback and frontend startup waits for backend health. Normal `down` preserves `citerag-data`; do not use `down -v` on valuable data.
 
-Run a saved evaluation after uploading the sample corpus:
+Docker Engine was unavailable during this work. Build, container health, non-root volume ownership and persistence across container restart remain unchecked. To verify live persistence later, use disposable data, owner authentication and a fixture provider first, upload a tiny document, record IDs/counts, restart, and compare. Real embedding smoke tests require separate paid-call intent. Never replace the owner's current volume during verification.
 
-```powershell
-docker compose exec backend python -m app.eval.run --dataset evals/sample.jsonl --judge
-```
+## Backup, recovery and rollback
 
-Evaluation output and history live on the data volume. Docker volume deletion is destructive; normal `docker compose down` preserves it. Do not run `down -v` on a database you need.
+1. Put live mode into maintenance (stop writes and paid calls); stop the backend before copying its full data directory, or take a storage-consistent snapshot. Chroma and SQLite are not a cross-store transaction.
+2. Back up vectors, metadata, metrics, evaluation history and usage ledger together. Encrypt/restrict backups; never commit them. Set retention with the owner and inspect legacy query_logs for old private text.
+3. Restore to a separate empty volume using the same app/dependency/model versions. Verify document IDs/pages/chunk counts and ledger state before a cited-answer test. Do not reset spending reservations on the active UTC day.
+4. Record the immutable application commit/image tag before deployment. For rollback, disable live inference, restore the previous image and compatible data snapshot, then check health, authentication and corpus/ledger consistency. Do not blindly roll back to pre-auth code on a public endpoint; keep showcase-only or private ingress.
+5. Monitor sanitized request IDs, 401/403/429/5xx rates, latency, usage and ledger reservations. External error tracking is not configured; if added, scrub bodies, headers, cookies and provider errors before transmission.
 
-## Verification and operations
+## Deployment approval checklist
 
-Compose configuration validated locally. Docker Engine was unavailable, so images, container health checks, Linux volume ownership, and hosted deployment have not been executed. The same standalone frontend artifact was started and exercised locally with browser tests; that does not substitute for a container test.
+- [ ] Owner approves merge and the exact hosting/account/paid resources; no deployment performed by this PR.
+- [ ] PR CI green; historical reports/datasets unchanged; final reserve unused.
+- [ ] Chroma advisories reviewed before their deadline; no Chroma HTTP server/remote model configuration introduced.
+- [ ] Images built, non-root volume ownership and restart persistence verified.
+- [ ] Canonical HTTPS origins/hosts configured; missing/wrong token denies every private API route.
+- [ ] Showcase cannot access private data or instantiate a provider; reports/examples labeled accurately.
+- [ ] Owner secret generated/stored privately, not a fixture value; rotation/logout/expiry tested.
+- [ ] Live provider prices and quotas reviewed; unknown usage stays reserved; edge limits and one-replica setting confirmed.
+- [ ] Host body/duration/memory limits tested with intended demo files.
+- [ ] Backup/restore and safe rollback tested; no private data or secrets in images/logs/artifacts.
 
-For backups, stop writes before copying the full data directory or use a storage snapshot with SQLite-consistent handling. Restore and verify document counts, IDs, vectors, and a cited answer on a separate instance. Chroma/SQLite are not a cross-store transaction, so preserve both together. Keep disk snapshots and an application-level restore test.
-
-Metrics default to 30-day retention and no raw questions. Existing legacy query_logs from older versions may still contain private questions; review their retention separately. OpenAI receives document chunks for embeddings and selected evidence for generation. Configure provider data handling to suit the documents you upload.
-
-If the local disk, embedding model, reranker model, or chunking policy changes, re-index/calibrate and rerun evaluations. Upgrading to multi-user production requires tenant-scoped authorization, per-user data isolation and quotas, durable shared services, distributed rate limiting, background jobs, migrations, and load tests. Those assumptions have not been silently added.
-
-## Current evaluation gate
-
-The fixed reranked filter achieved 84.38% source recall on the new question-level holdout, despite 100% recall on its small calibration benchmark. Its higher precision is a recall tradeoff, not a generally validated improvement. After the frozen study, the source-publication configuration defaults to hybrid; dense is also recommended. Aggressive reranking remains experimental, with its threshold unchanged. This operational recommendation does not change historical results or the frozen protocol. Further retrieval policy work needs development data and a separately frozen assessment; the reserved final set has not been run. See docs/heldout-results.md before making reliability claims or exposing a service.
+Only after these gates should an approved protected live endpoint be tested. Passing local/CI checks does not verify the hosting environment.
