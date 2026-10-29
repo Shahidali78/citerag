@@ -15,10 +15,8 @@ services:
     envVars:
       - key: CITERAG_ACCESS_MODE
         value: showcase
-      - key: CITERAG_ACCESS_TOKEN
-        sync: false
-      - key: OPENAI_API_KEY
-        sync: false
+      # Showcase needs no credentials. Add owner/model secrets manually only
+      # when enabling protected live mode after the deployment review.
       - key: CORS_ORIGINS
         sync: false
       - key: CITERAG_DEMO
